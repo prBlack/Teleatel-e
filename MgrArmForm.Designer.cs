@@ -29,12 +29,29 @@ namespace Teleatel_e
         /// </summary>
         private void InitializeComponent()
         {
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(13, 27);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowHeadersWidth = 51;
+            this.dataGridView2.RowTemplate.Height = 24;
+            this.dataGridView2.Size = new System.Drawing.Size(1073, 431);
+            this.dataGridView2.TabIndex = 0;
             // 
             // MgrArmForm
             // 
             this.ClientSize = new System.Drawing.Size(1098, 515);
+            this.Controls.Add(this.dataGridView2);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "MgrArmForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -42,6 +59,6 @@ namespace Teleatel_e
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-
+        private System.Windows.Forms.DataGridView dataGridView2;
     }
 }

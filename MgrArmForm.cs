@@ -57,13 +57,13 @@ namespace Teleatel_e
 
                 sqlDataAdapter.Fill(dataSet, "Masters");
 
-                dataGridView1.DataSource = dataSet.Tables["Masters"];
+                dataGridView2.DataSource = dataSet.Tables["Masters"];
 
-                for (int i =0; i < dataGridView1.Rows.Count; i++)
+                for (int i =0; i < dataGridView2.Rows.Count; i++)
                 {
                     DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
 
-                    dataGridView1[6, i] = linkCell;
+                    dataGridView2[6, i] = linkCell;
                 }
             }
             catch (Exception ex)
@@ -81,13 +81,13 @@ namespace Teleatel_e
 
                 sqlDataAdapter.Fill(dataSet, "Masters");
 
-                dataGridView1.DataSource = dataSet.Tables["Masters"];
+                dataGridView2.DataSource = dataSet.Tables["Masters"];
 
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                for (int i = 0; i < dataGridView2.Rows.Count; i++)
                 {
                     DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
 
-                    dataGridView1[5, i] = linkCell;
+                    dataGridView2[5, i] = linkCell;
                 }
             }
             catch (Exception ex)
