@@ -4,7 +4,18 @@
 
     public partial class _Телеателье__Спектр_DataSet
     {
-        partial class ЗаказыDataTable
+        partial class MastersDataTable
+        {
+        }
+
+        partial class OrdersDataTable
+        {
+        }
+        partial class CustomersDataTable
+        {
+        }
+
+        partial class EquipmentsDataTable
         {
         }
     }

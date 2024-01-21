@@ -1,16 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="_Телеателье__Спектр_DataSet" targetNamespace="http://tempuri.org/_Телеателье__Спектр_DataSet.xsd" xmlns:mstns="http://tempuri.org/_Телеателье__Спектр_DataSet.xsd" xmlns="http://tempuri.org/_Телеателье__Спектр_DataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+<xs:schema id="Teleatel_eDataSet" targetNamespace="http://tempuri.org/Teleatel_eDataSet.xsd" xmlns:mstns="http://tempuri.org/Teleatel_eDataSet.xsd" xmlns="http://tempuri.org/Teleatel_eDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Телеателье__Спектр_ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Телеателье__Спектр_ConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Teleatel_e.Properties.Settings.GlobalReference.Default.Телеателье__Спектр_ConnectionString" Provider="System.Data.SqlClient" />
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Teleatel_eConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Teleatel_eConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Teleatel_e.Properties.Settings.GlobalReference.Default.Teleatel_eConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CustomersTableAdapter" GeneratorDataComponentClassName="CustomersTableAdapter" Name="Customers" UserDataComponentName="CustomersTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Teleatel_eConnectionString (Settings)" DbObjectName="Teleatel_e.dbo.Customers" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Teleatel_eConnectionString (Settings)" DbObjectName="Teleatel_e.dbo.Customers" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [dbo].[Customers] WHERE (([CustomerID] = @Original_CustomerID) AND ((@IsNull_CustomerType = 1 AND [CustomerType] IS NULL) OR ([CustomerType] = @Original_CustomerType)) AND ((@IsNull_CustomerFio = 1 AND [CustomerFio] IS NULL) OR ([CustomerFio] = @Original_CustomerFio)) AND ((@IsNull_CustomerName = 1 AND [CustomerName] IS NULL) OR ([CustomerName] = @Original_CustomerName)) AND ((@IsNull_CustomerInn = 1 AND [CustomerInn] IS NULL) OR ([CustomerInn] = @Original_CustomerInn)) AND ((@IsNull_Chief = 1 AND [Chief] IS NULL) OR ([Chief] = @Original_Chief)) AND ((@IsNull_Phone = 1 AND [Phone] IS NULL) OR ([Phone] = @Original_Phone)) AND ((@IsNull_Address = 1 AND [Address] IS NULL) OR ([Address] = @Original_Address)) AND ((@IsNull_Bank = 1 AND [Bank] IS NULL) OR ([Bank] = @Original_Bank)) AND ((@IsNull_Distinct = 1 AND [Distinct] IS NULL) OR ([Distinct] = @Original_Distinct)) AND ((@IsNull_Discont = 1 AND [Discont] IS NULL) OR ([Discont] = @Original_Discont)))</CommandText>
@@ -58,7 +57,7 @@ SELECT CustomerID, CustomerType, CustomerFio, CustomerName, CustomerInn, Chief, 
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT CustomerID, CustomerType, CustomerFio, CustomerName, CustomerInn, Chief, Phone, Address, Bank, [Distinct], Discont FROM dbo.Customers</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -120,104 +119,86 @@ SELECT CustomerID, CustomerType, CustomerFio, CustomerName, CustomerInn, Chief, 
             </Mappings>
             <Sources />
           </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="OrdersTableAdapter" GeneratorDataComponentClassName="OrdersTableAdapter" Name="Orders" UserDataComponentName="OrdersTableAdapter">
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="EquipmentsTableAdapter" GeneratorDataComponentClassName="EquipmentsTableAdapter" Name="Equipments" UserDataComponentName="EquipmentsTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Teleatel_eConnectionString (Settings)" DbObjectName="Teleatel_e.dbo.Orders" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Teleatel_eConnectionString (Settings)" DbObjectName="Teleatel_e.dbo.Equipments" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [Orders] WHERE (([TypeID] = @Original_TypeID) AND ([IzdelieID] = @Original_IzdelieID) AND ([CustomerID] = @Original_CustomerID) AND ([MasterID] = @Original_MasterID) AND ((@IsNull_DateStart = 1 AND [DateStart] IS NULL) OR ([DateStart] = @Original_DateStart)) AND ((@IsNull_DateStop = 1 AND [DateStop] IS NULL) OR ([DateStop] = @Original_DateStop)) AND ((@IsNull_Summa = 1 AND [Summa] IS NULL) OR ([Summa] = @Original_Summa)) AND ((@IsNull_Period = 1 AND [Period] IS NULL) OR ([Period] = @Original_Period)) AND ((@IsNull_Guarantee = 1 AND [Guarantee] IS NULL) OR ([Guarantee] = @Original_Guarantee)))</CommandText>
+                    <CommandText>DELETE FROM [dbo].[Equipments] WHERE (([IzdelieID] = @Original_IzdelieID) AND ((@IsNull_Type = 1 AND [Type] IS NULL) OR ([Type] = @Original_Type)) AND ((@IsNull_Country = 1 AND [Country] IS NULL) OR ([Country] = @Original_Country)) AND ((@IsNull_Company = 1 AND [Company] IS NULL) OR ([Company] = @Original_Company)) AND ((@IsNull_PictureID = 1 AND [PictureID] IS NULL) OR ([PictureID] = @Original_PictureID)) AND ((@IsNull_Age = 1 AND [Age] IS NULL) OR ([Age] = @Original_Age)))</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_TypeID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TypeID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_IzdelieID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IzdelieID" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_CustomerID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CustomerID" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_MasterID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MasterID" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DateStart" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DateStart" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@Original_DateStart" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="DateStart" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DateStop" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DateStop" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@Original_DateStop" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="DateStop" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Summa" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Summa" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Currency" Direction="Input" ParameterName="@Original_Summa" Precision="0" ProviderType="SmallMoney" Scale="0" Size="0" SourceColumn="Summa" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Period" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Period" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Period" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Period" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Guarantee" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Guarantee" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_Guarantee" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Guarantee" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Type" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Type" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Type" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Type" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Country" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Country" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Country" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Country" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Company" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Company" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Company" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Company" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_PictureID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="PictureID" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_PictureID" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="PictureID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Age" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Age" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Age" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Age" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [Orders] ([IzdelieID], [CustomerID], [MasterID], [DateStart], [DateStop], [Summa], [Period], [Guarantee], [Comment]) VALUES (@IzdelieID, @CustomerID, @MasterID, @DateStart, @DateStop, @Summa, @Period, @Guarantee, @Comment);
-SELECT TypeID, IzdelieID, CustomerID, MasterID, DateStart, DateStop, Summa, Period, Guarantee, Comment FROM Orders WHERE (TypeID = SCOPE_IDENTITY())</CommandText>
+                    <CommandText>INSERT INTO [dbo].[Equipments] ([Type], [Country], [Company], [PictureID], [Age]) VALUES (@Type, @Country, @Company, @PictureID, @Age);
+SELECT IzdelieID, Type, Country, Company, PictureID, Age FROM Equipments WHERE (IzdelieID = SCOPE_IDENTITY())</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IzdelieID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IzdelieID" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@CustomerID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CustomerID" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@MasterID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MasterID" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@DateStart" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="DateStart" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@DateStop" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="DateStop" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Currency" Direction="Input" ParameterName="@Summa" Precision="0" ProviderType="SmallMoney" Scale="0" Size="0" SourceColumn="Summa" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Period" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Period" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Guarantee" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Guarantee" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Comment" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Comment" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Type" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Type" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Country" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Country" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Company" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Company" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@PictureID" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="PictureID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Age" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Age" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT TypeID, IzdelieID, CustomerID, MasterID, DateStart, DateStop, Summa, Period, Guarantee, Comment FROM Orders</CommandText>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT IzdelieID, Type, Country, Company, PictureID, Age FROM dbo.Equipments</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [Orders] SET [IzdelieID] = @IzdelieID, [CustomerID] = @CustomerID, [MasterID] = @MasterID, [DateStart] = @DateStart, [DateStop] = @DateStop, [Summa] = @Summa, [Period] = @Period, [Guarantee] = @Guarantee, [Comment] = @Comment WHERE (([TypeID] = @Original_TypeID) AND ([IzdelieID] = @Original_IzdelieID) AND ([CustomerID] = @Original_CustomerID) AND ([MasterID] = @Original_MasterID) AND ((@IsNull_DateStart = 1 AND [DateStart] IS NULL) OR ([DateStart] = @Original_DateStart)) AND ((@IsNull_DateStop = 1 AND [DateStop] IS NULL) OR ([DateStop] = @Original_DateStop)) AND ((@IsNull_Summa = 1 AND [Summa] IS NULL) OR ([Summa] = @Original_Summa)) AND ((@IsNull_Period = 1 AND [Period] IS NULL) OR ([Period] = @Original_Period)) AND ((@IsNull_Guarantee = 1 AND [Guarantee] IS NULL) OR ([Guarantee] = @Original_Guarantee)));
-SELECT TypeID, IzdelieID, CustomerID, MasterID, DateStart, DateStop, Summa, Period, Guarantee, Comment FROM Orders WHERE (TypeID = @TypeID)</CommandText>
+                    <CommandText>UPDATE [dbo].[Equipments] SET [Type] = @Type, [Country] = @Country, [Company] = @Company, [PictureID] = @PictureID, [Age] = @Age WHERE (([IzdelieID] = @Original_IzdelieID) AND ((@IsNull_Type = 1 AND [Type] IS NULL) OR ([Type] = @Original_Type)) AND ((@IsNull_Country = 1 AND [Country] IS NULL) OR ([Country] = @Original_Country)) AND ((@IsNull_Company = 1 AND [Company] IS NULL) OR ([Company] = @Original_Company)) AND ((@IsNull_PictureID = 1 AND [PictureID] IS NULL) OR ([PictureID] = @Original_PictureID)) AND ((@IsNull_Age = 1 AND [Age] IS NULL) OR ([Age] = @Original_Age)));
+SELECT IzdelieID, Type, Country, Company, PictureID, Age FROM Equipments WHERE (IzdelieID = @IzdelieID)</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IzdelieID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IzdelieID" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@CustomerID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CustomerID" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@MasterID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MasterID" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@DateStart" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="DateStart" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@DateStop" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="DateStop" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Currency" Direction="Input" ParameterName="@Summa" Precision="0" ProviderType="SmallMoney" Scale="0" Size="0" SourceColumn="Summa" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Period" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Period" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Guarantee" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Guarantee" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Comment" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Comment" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_TypeID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TypeID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Type" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Type" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Country" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Country" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Company" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Company" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@PictureID" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="PictureID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Age" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Age" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_IzdelieID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IzdelieID" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_CustomerID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CustomerID" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_MasterID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MasterID" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DateStart" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DateStart" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@Original_DateStart" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="DateStart" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DateStop" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DateStop" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@Original_DateStop" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="DateStop" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Summa" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Summa" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Currency" Direction="Input" ParameterName="@Original_Summa" Precision="0" ProviderType="SmallMoney" Scale="0" Size="0" SourceColumn="Summa" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Period" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Period" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Period" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Period" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Guarantee" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Guarantee" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_Guarantee" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Guarantee" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="TypeID" ColumnName="TypeID" DataSourceName="Teleatel_e.dbo.Orders" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@TypeID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="TypeID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Type" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Type" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Type" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Type" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Country" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Country" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Country" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Country" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Company" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Company" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Company" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Company" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_PictureID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="PictureID" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_PictureID" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="PictureID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Age" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Age" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Age" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Age" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="IzdelieID" ColumnName="IzdelieID" DataSourceName="Teleatel_e.dbo.Equipments" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@IzdelieID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="IzdelieID" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
             </MainSource>
             <Mappings>
-              <Mapping SourceColumn="TypeID" DataSetColumn="TypeID" />
               <Mapping SourceColumn="IzdelieID" DataSetColumn="IzdelieID" />
-              <Mapping SourceColumn="CustomerID" DataSetColumn="CustomerID" />
-              <Mapping SourceColumn="MasterID" DataSetColumn="MasterID" />
-              <Mapping SourceColumn="DateStart" DataSetColumn="DateStart" />
-              <Mapping SourceColumn="DateStop" DataSetColumn="DateStop" />
-              <Mapping SourceColumn="Summa" DataSetColumn="Summa" />
-              <Mapping SourceColumn="Period" DataSetColumn="Period" />
-              <Mapping SourceColumn="Guarantee" DataSetColumn="Guarantee" />
-              <Mapping SourceColumn="Comment" DataSetColumn="Comment" />
+              <Mapping SourceColumn="Type" DataSetColumn="Type" />
+              <Mapping SourceColumn="Country" DataSetColumn="Country" />
+              <Mapping SourceColumn="Company" DataSetColumn="Company" />
+              <Mapping SourceColumn="PictureID" DataSetColumn="PictureID" />
+              <Mapping SourceColumn="Age" DataSetColumn="Age" />
             </Mappings>
             <Sources />
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="MastersTableAdapter" GeneratorDataComponentClassName="MastersTableAdapter" Name="Masters" UserDataComponentName="MastersTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Teleatel_eConnectionString (Settings)" DbObjectName="Teleatel_e.dbo.Masters" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Teleatel_eConnectionString (Settings)" DbObjectName="Teleatel_e.dbo.Masters" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [dbo].[Masters] WHERE (([MasterID] = @Original_MasterID) AND ([MasterFio] = @Original_MasterFio) AND ((@IsNull_Experience = 1 AND [Experience] IS NULL) OR ([Experience] = @Original_Experience)) AND ((@IsNull_Defect = 1 AND [Defect] IS NULL) OR ([Defect] = @Original_Defect)) AND ((@IsNull_RepairAll = 1 AND [RepairAll] IS NULL) OR ([RepairAll] = @Original_RepairAll)))</CommandText>
@@ -246,7 +227,7 @@ SELECT MasterID, MasterFio, Experience, Defect, RepairAll FROM Masters WHERE (Ma
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT MasterID, MasterFio, Experience, Defect, RepairAll FROM dbo.Masters</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -283,80 +264,105 @@ SELECT MasterID, MasterFio, Experience, Defect, RepairAll FROM Masters WHERE (Ma
             </Mappings>
             <Sources />
           </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="EquipmentsTableAdapter" GeneratorDataComponentClassName="EquipmentsTableAdapter" Name="Equipments" UserDataComponentName="EquipmentsTableAdapter">
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="OrdersTableAdapter" GeneratorDataComponentClassName="OrdersTableAdapter" Name="Orders" UserDataComponentName="OrdersTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Teleatel_eConnectionString (Settings)" DbObjectName="Teleatel_e.dbo.Equipments" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Teleatel_eConnectionString (Settings)" DbObjectName="Teleatel_e.dbo.Orders" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [Equipments] WHERE (([IzdelieID] = @Original_IzdelieID) AND ((@IsNull_Type = 1 AND [Type] IS NULL) OR ([Type] = @Original_Type)) AND ((@IsNull_Country = 1 AND [Country] IS NULL) OR ([Country] = @Original_Country)) AND ((@IsNull_Company = 1 AND [Company] IS NULL) OR ([Company] = @Original_Company)) AND ((@IsNull_Age = 1 AND [Age] IS NULL) OR ([Age] = @Original_Age)) AND ((@IsNull_PictureID = 1 AND [PictureID] IS NULL) OR ([PictureID] = @Original_PictureID)))</CommandText>
+                    <CommandText>DELETE FROM [dbo].[Orders] WHERE (([TypeID] = @Original_TypeID) AND ([IzdelieID] = @Original_IzdelieID) AND ([CustomerID] = @Original_CustomerID) AND ([MasterID] = @Original_MasterID) AND ((@IsNull_DateStart = 1 AND [DateStart] IS NULL) OR ([DateStart] = @Original_DateStart)) AND ((@IsNull_DateStop = 1 AND [DateStop] IS NULL) OR ([DateStop] = @Original_DateStop)) AND ((@IsNull_Summa = 1 AND [Summa] IS NULL) OR ([Summa] = @Original_Summa)) AND ((@IsNull_Period = 1 AND [Period] IS NULL) OR ([Period] = @Original_Period)) AND ((@IsNull_Guarantee = 1 AND [Guarantee] IS NULL) OR ([Guarantee] = @Original_Guarantee)) AND ((@IsNull_Warranty = 1 AND [Warranty] IS NULL) OR ([Warranty] = @Original_Warranty)))</CommandText>
                     <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_TypeID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TypeID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_IzdelieID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IzdelieID" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Type" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Type" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Type" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Type" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Country" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Country" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Country" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Country" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Company" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Company" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Company" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Company" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Age" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Age" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Age" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Age" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_PictureID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="PictureID" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_PictureID" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="PictureID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_CustomerID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CustomerID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_MasterID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MasterID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DateStart" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DateStart" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@Original_DateStart" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="DateStart" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DateStop" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DateStop" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@Original_DateStop" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="DateStop" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Summa" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Summa" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Currency" Direction="Input" ParameterName="@Original_Summa" Precision="0" ProviderType="SmallMoney" Scale="0" Size="0" SourceColumn="Summa" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Period" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Period" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Period" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Period" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Guarantee" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Guarantee" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_Guarantee" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Guarantee" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Warranty" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Warranty" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Warranty" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Warranty" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [Equipments] ([Type], [Country], [Company], [Age], [PictureID]) VALUES (@Type, @Country, @Company, @Age, @PictureID);
-SELECT IzdelieID, Type, Country, Company, Age, PictureID FROM Equipments WHERE (IzdelieID = SCOPE_IDENTITY())</CommandText>
+                    <CommandText>INSERT INTO [dbo].[Orders] ([IzdelieID], [CustomerID], [MasterID], [DateStart], [DateStop], [Summa], [Period], [Guarantee], [Comment], [Warranty]) VALUES (@IzdelieID, @CustomerID, @MasterID, @DateStart, @DateStop, @Summa, @Period, @Guarantee, @Comment, @Warranty);
+SELECT TypeID, IzdelieID, CustomerID, MasterID, DateStart, DateStop, Summa, Period, Guarantee, Comment, Warranty FROM Orders WHERE (TypeID = SCOPE_IDENTITY())</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Type" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Type" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Country" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Country" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Company" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Company" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Age" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Age" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@PictureID" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="PictureID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IzdelieID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IzdelieID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@CustomerID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CustomerID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@MasterID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MasterID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@DateStart" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="DateStart" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@DateStop" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="DateStop" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Currency" Direction="Input" ParameterName="@Summa" Precision="0" ProviderType="SmallMoney" Scale="0" Size="0" SourceColumn="Summa" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Period" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Period" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Guarantee" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Guarantee" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Comment" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Comment" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Warranty" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Warranty" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT IzdelieID, Type, Country, Company, Age, PictureID FROM [Equipments]</CommandText>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT TypeID, IzdelieID, CustomerID, MasterID, DateStart, DateStop, Summa, Period, Guarantee, Comment, Warranty FROM dbo.Orders</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [Equipments] SET [Type] = @Type, [Country] = @Country, [Company] = @Company, [Age] = @Age, [PictureID] = @PictureID WHERE (([IzdelieID] = @Original_IzdelieID) AND ((@IsNull_Type = 1 AND [Type] IS NULL) OR ([Type] = @Original_Type)) AND ((@IsNull_Country = 1 AND [Country] IS NULL) OR ([Country] = @Original_Country)) AND ((@IsNull_Company = 1 AND [Company] IS NULL) OR ([Company] = @Original_Company)) AND ((@IsNull_Age = 1 AND [Age] IS NULL) OR ([Age] = @Original_Age)) AND ((@IsNull_PictureID = 1 AND [PictureID] IS NULL) OR ([PictureID] = @Original_PictureID)));
-SELECT IzdelieID, Type, Country, Company, Age, PictureID FROM Equipments WHERE (IzdelieID = @IzdelieID)</CommandText>
+                    <CommandText>UPDATE [dbo].[Orders] SET [IzdelieID] = @IzdelieID, [CustomerID] = @CustomerID, [MasterID] = @MasterID, [DateStart] = @DateStart, [DateStop] = @DateStop, [Summa] = @Summa, [Period] = @Period, [Guarantee] = @Guarantee, [Comment] = @Comment, [Warranty] = @Warranty WHERE (([TypeID] = @Original_TypeID) AND ([IzdelieID] = @Original_IzdelieID) AND ([CustomerID] = @Original_CustomerID) AND ([MasterID] = @Original_MasterID) AND ((@IsNull_DateStart = 1 AND [DateStart] IS NULL) OR ([DateStart] = @Original_DateStart)) AND ((@IsNull_DateStop = 1 AND [DateStop] IS NULL) OR ([DateStop] = @Original_DateStop)) AND ((@IsNull_Summa = 1 AND [Summa] IS NULL) OR ([Summa] = @Original_Summa)) AND ((@IsNull_Period = 1 AND [Period] IS NULL) OR ([Period] = @Original_Period)) AND ((@IsNull_Guarantee = 1 AND [Guarantee] IS NULL) OR ([Guarantee] = @Original_Guarantee)) AND ((@IsNull_Warranty = 1 AND [Warranty] IS NULL) OR ([Warranty] = @Original_Warranty)));
+SELECT TypeID, IzdelieID, CustomerID, MasterID, DateStart, DateStop, Summa, Period, Guarantee, Comment, Warranty FROM Orders WHERE (TypeID = @TypeID)</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Type" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Type" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Country" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Country" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Company" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Company" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Age" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Age" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@PictureID" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="PictureID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IzdelieID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IzdelieID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@CustomerID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CustomerID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@MasterID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MasterID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@DateStart" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="DateStart" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@DateStop" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="DateStop" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Currency" Direction="Input" ParameterName="@Summa" Precision="0" ProviderType="SmallMoney" Scale="0" Size="0" SourceColumn="Summa" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Period" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Period" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Guarantee" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Guarantee" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Comment" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Comment" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Warranty" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Warranty" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_TypeID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TypeID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_IzdelieID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IzdelieID" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Type" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Type" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Type" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Type" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Country" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Country" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Country" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Country" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Company" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Company" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Company" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Company" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Age" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Age" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Age" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Age" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_PictureID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="PictureID" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_PictureID" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="PictureID" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="IzdelieID" ColumnName="IzdelieID" DataSourceName="Teleatel_e.dbo.Equipments" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@IzdelieID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="IzdelieID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_CustomerID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CustomerID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_MasterID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MasterID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DateStart" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DateStart" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@Original_DateStart" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="DateStart" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DateStop" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DateStop" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@Original_DateStop" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="DateStop" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Summa" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Summa" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Currency" Direction="Input" ParameterName="@Original_Summa" Precision="0" ProviderType="SmallMoney" Scale="0" Size="0" SourceColumn="Summa" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Period" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Period" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Period" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Period" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Guarantee" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Guarantee" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_Guarantee" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Guarantee" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Warranty" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Warranty" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Warranty" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Warranty" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="TypeID" ColumnName="TypeID" DataSourceName="Teleatel_e.dbo.Orders" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@TypeID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="TypeID" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
             </MainSource>
             <Mappings>
+              <Mapping SourceColumn="TypeID" DataSetColumn="TypeID" />
               <Mapping SourceColumn="IzdelieID" DataSetColumn="IzdelieID" />
-              <Mapping SourceColumn="Type" DataSetColumn="Type" />
-              <Mapping SourceColumn="Country" DataSetColumn="Country" />
-              <Mapping SourceColumn="Company" DataSetColumn="Company" />
-              <Mapping SourceColumn="Age" DataSetColumn="Age" />
-              <Mapping SourceColumn="PictureID" DataSetColumn="PictureID" />
+              <Mapping SourceColumn="CustomerID" DataSetColumn="CustomerID" />
+              <Mapping SourceColumn="MasterID" DataSetColumn="MasterID" />
+              <Mapping SourceColumn="DateStart" DataSetColumn="DateStart" />
+              <Mapping SourceColumn="DateStop" DataSetColumn="DateStop" />
+              <Mapping SourceColumn="Summa" DataSetColumn="Summa" />
+              <Mapping SourceColumn="Period" DataSetColumn="Period" />
+              <Mapping SourceColumn="Guarantee" DataSetColumn="Guarantee" />
+              <Mapping SourceColumn="Comment" DataSetColumn="Comment" />
+              <Mapping SourceColumn="Warranty" DataSetColumn="Warranty" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -365,7 +371,7 @@ SELECT IzdelieID, Type, Country, Company, Age, PictureID FROM Equipments WHERE (
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="_Телеателье__Спектр_DataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="_Телеателье__Спектр_DataSet" msprop:Generator_UserDSName="_Телеателье__Спектр_DataSet">
+  <xs:element name="Teleatel_eDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="Teleatel_eDataSet" msprop:Generator_UserDSName="Teleatel_eDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="Customers" msprop:Generator_TableClassName="CustomersDataTable" msprop:Generator_TableVarName="tableCustomers" msprop:Generator_TablePropName="Customers" msprop:Generator_RowDeletingName="CustomersRowDeleting" msprop:Generator_RowChangingName="CustomersRowChanging" msprop:Generator_RowEvHandlerName="CustomersRowChangeEventHandler" msprop:Generator_RowDeletedName="CustomersRowDeleted" msprop:Generator_UserTableName="Customers" msprop:Generator_RowChangedName="CustomersRowChanged" msprop:Generator_RowEvArgName="CustomersRowChangeEvent" msprop:Generator_RowClassName="CustomersRow">
@@ -439,45 +445,6 @@ SELECT IzdelieID, Type, Country, Company, Age, PictureID FROM Equipments WHERE (
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Orders" msprop:Generator_TableClassName="OrdersDataTable" msprop:Generator_TableVarName="tableOrders" msprop:Generator_TablePropName="Orders" msprop:Generator_RowDeletingName="OrdersRowDeleting" msprop:Generator_RowChangingName="OrdersRowChanging" msprop:Generator_RowEvHandlerName="OrdersRowChangeEventHandler" msprop:Generator_RowDeletedName="OrdersRowDeleted" msprop:Generator_UserTableName="Orders" msprop:Generator_RowChangedName="OrdersRowChanged" msprop:Generator_RowEvArgName="OrdersRowChangeEvent" msprop:Generator_RowClassName="OrdersRow">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="TypeID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnTypeID" msprop:Generator_ColumnPropNameInRow="TypeID" msprop:Generator_ColumnPropNameInTable="TypeIDColumn" msprop:Generator_UserColumnName="TypeID" type="xs:int" />
-              <xs:element name="IzdelieID" msprop:Generator_ColumnVarNameInTable="columnIzdelieID" msprop:Generator_ColumnPropNameInRow="IzdelieID" msprop:Generator_ColumnPropNameInTable="IzdelieIDColumn" msprop:Generator_UserColumnName="IzdelieID" type="xs:int" />
-              <xs:element name="CustomerID" msprop:Generator_ColumnVarNameInTable="columnCustomerID" msprop:Generator_ColumnPropNameInRow="CustomerID" msprop:Generator_ColumnPropNameInTable="CustomerIDColumn" msprop:Generator_UserColumnName="CustomerID" type="xs:int" />
-              <xs:element name="MasterID" msprop:Generator_ColumnVarNameInTable="columnMasterID" msprop:Generator_ColumnPropNameInRow="MasterID" msprop:Generator_ColumnPropNameInTable="MasterIDColumn" msprop:Generator_UserColumnName="MasterID" type="xs:int" />
-              <xs:element name="DateStart" msprop:Generator_ColumnVarNameInTable="columnDateStart" msprop:Generator_ColumnPropNameInRow="DateStart" msprop:Generator_ColumnPropNameInTable="DateStartColumn" msprop:Generator_UserColumnName="DateStart" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="DateStop" msprop:Generator_ColumnVarNameInTable="columnDateStop" msprop:Generator_ColumnPropNameInRow="DateStop" msprop:Generator_ColumnPropNameInTable="DateStopColumn" msprop:Generator_UserColumnName="DateStop" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="Summa" msprop:Generator_ColumnVarNameInTable="columnSumma" msprop:Generator_ColumnPropNameInRow="Summa" msprop:Generator_ColumnPropNameInTable="SummaColumn" msprop:Generator_UserColumnName="Summa" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Period" msprop:Generator_ColumnVarNameInTable="columnPeriod" msprop:Generator_ColumnPropNameInRow="Period" msprop:Generator_ColumnPropNameInTable="PeriodColumn" msprop:Generator_UserColumnName="Period" type="xs:int" minOccurs="0" />
-              <xs:element name="Guarantee" msprop:Generator_ColumnVarNameInTable="columnGuarantee" msprop:Generator_ColumnPropNameInRow="Guarantee" msprop:Generator_ColumnPropNameInTable="GuaranteeColumn" msprop:Generator_UserColumnName="Guarantee" type="xs:boolean" minOccurs="0" />
-              <xs:element name="Comment" msprop:Generator_ColumnVarNameInTable="columnComment" msprop:Generator_ColumnPropNameInRow="Comment" msprop:Generator_ColumnPropNameInTable="CommentColumn" msprop:Generator_UserColumnName="Comment" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="Masters" msprop:Generator_TableClassName="MastersDataTable" msprop:Generator_TableVarName="tableMasters" msprop:Generator_TablePropName="Masters" msprop:Generator_RowDeletingName="MastersRowDeleting" msprop:Generator_RowChangingName="MastersRowChanging" msprop:Generator_RowEvHandlerName="MastersRowChangeEventHandler" msprop:Generator_RowDeletedName="MastersRowDeleted" msprop:Generator_UserTableName="Masters" msprop:Generator_RowChangedName="MastersRowChanged" msprop:Generator_RowEvArgName="MastersRowChangeEvent" msprop:Generator_RowClassName="MastersRow">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="MasterID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnMasterID" msprop:Generator_ColumnPropNameInRow="MasterID" msprop:Generator_ColumnPropNameInTable="MasterIDColumn" msprop:Generator_UserColumnName="MasterID" type="xs:int" />
-              <xs:element name="MasterFio" msprop:Generator_ColumnVarNameInTable="columnMasterFio" msprop:Generator_ColumnPropNameInRow="MasterFio" msprop:Generator_ColumnPropNameInTable="MasterFioColumn" msprop:Generator_UserColumnName="MasterFio">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Experience" msprop:Generator_ColumnVarNameInTable="columnExperience" msprop:Generator_ColumnPropNameInRow="Experience" msprop:Generator_ColumnPropNameInTable="ExperienceColumn" msprop:Generator_UserColumnName="Experience" type="xs:int" minOccurs="0" />
-              <xs:element name="Defect" msprop:Generator_ColumnVarNameInTable="columnDefect" msprop:Generator_ColumnPropNameInRow="Defect" msprop:Generator_ColumnPropNameInTable="DefectColumn" msprop:Generator_UserColumnName="Defect" type="xs:int" minOccurs="0" />
-              <xs:element name="RepairAll" msprop:Generator_ColumnVarNameInTable="columnRepairAll" msprop:Generator_ColumnPropNameInRow="RepairAll" msprop:Generator_ColumnPropNameInTable="RepairAllColumn" msprop:Generator_UserColumnName="RepairAll" type="xs:int" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
         <xs:element name="Equipments" msprop:Generator_TableClassName="EquipmentsDataTable" msprop:Generator_TableVarName="tableEquipments" msprop:Generator_TablePropName="Equipments" msprop:Generator_RowDeletingName="EquipmentsRowDeleting" msprop:Generator_RowChangingName="EquipmentsRowChanging" msprop:Generator_RowEvHandlerName="EquipmentsRowChangeEventHandler" msprop:Generator_RowDeletedName="EquipmentsRowDeleted" msprop:Generator_UserTableName="Equipments" msprop:Generator_RowChangedName="EquipmentsRowChanged" msprop:Generator_RowEvArgName="EquipmentsRowChangeEvent" msprop:Generator_RowClassName="EquipmentsRow">
           <xs:complexType>
             <xs:sequence>
@@ -503,7 +470,6 @@ SELECT IzdelieID, Type, Country, Company, Age, PictureID FROM Equipments WHERE (
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Age" msprop:Generator_ColumnVarNameInTable="columnAge" msprop:Generator_ColumnPropNameInRow="Age" msprop:Generator_ColumnPropNameInTable="AgeColumn" msprop:Generator_UserColumnName="Age" type="xs:int" minOccurs="0" />
               <xs:element name="PictureID" msprop:Generator_ColumnVarNameInTable="columnPictureID" msprop:Generator_ColumnPropNameInRow="PictureID" msprop:Generator_ColumnPropNameInTable="PictureIDColumn" msprop:Generator_UserColumnName="PictureID" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -511,6 +477,47 @@ SELECT IzdelieID, Type, Country, Company, Age, PictureID FROM Equipments WHERE (
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="Age" msprop:Generator_ColumnVarNameInTable="columnAge" msprop:Generator_ColumnPropNameInRow="Age" msprop:Generator_ColumnPropNameInTable="AgeColumn" msprop:Generator_UserColumnName="Age" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Masters" msprop:Generator_TableClassName="MastersDataTable" msprop:Generator_TableVarName="tableMasters" msprop:Generator_TablePropName="Masters" msprop:Generator_RowDeletingName="MastersRowDeleting" msprop:Generator_RowChangingName="MastersRowChanging" msprop:Generator_RowEvHandlerName="MastersRowChangeEventHandler" msprop:Generator_RowDeletedName="MastersRowDeleted" msprop:Generator_UserTableName="Masters" msprop:Generator_RowChangedName="MastersRowChanged" msprop:Generator_RowEvArgName="MastersRowChangeEvent" msprop:Generator_RowClassName="MastersRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MasterID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnMasterID" msprop:Generator_ColumnPropNameInRow="MasterID" msprop:Generator_ColumnPropNameInTable="MasterIDColumn" msprop:Generator_UserColumnName="MasterID" type="xs:int" />
+              <xs:element name="MasterFio" msprop:Generator_ColumnVarNameInTable="columnMasterFio" msprop:Generator_ColumnPropNameInRow="MasterFio" msprop:Generator_ColumnPropNameInTable="MasterFioColumn" msprop:Generator_UserColumnName="MasterFio">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Experience" msprop:Generator_ColumnVarNameInTable="columnExperience" msprop:Generator_ColumnPropNameInRow="Experience" msprop:Generator_ColumnPropNameInTable="ExperienceColumn" msprop:Generator_UserColumnName="Experience" type="xs:int" minOccurs="0" />
+              <xs:element name="Defect" msprop:Generator_ColumnVarNameInTable="columnDefect" msprop:Generator_ColumnPropNameInRow="Defect" msprop:Generator_ColumnPropNameInTable="DefectColumn" msprop:Generator_UserColumnName="Defect" type="xs:int" minOccurs="0" />
+              <xs:element name="RepairAll" msprop:Generator_ColumnVarNameInTable="columnRepairAll" msprop:Generator_ColumnPropNameInRow="RepairAll" msprop:Generator_ColumnPropNameInTable="RepairAllColumn" msprop:Generator_UserColumnName="RepairAll" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Orders" msprop:Generator_TableClassName="OrdersDataTable" msprop:Generator_TableVarName="tableOrders" msprop:Generator_TablePropName="Orders" msprop:Generator_RowDeletingName="OrdersRowDeleting" msprop:Generator_RowChangingName="OrdersRowChanging" msprop:Generator_RowEvHandlerName="OrdersRowChangeEventHandler" msprop:Generator_RowDeletedName="OrdersRowDeleted" msprop:Generator_UserTableName="Orders" msprop:Generator_RowChangedName="OrdersRowChanged" msprop:Generator_RowEvArgName="OrdersRowChangeEvent" msprop:Generator_RowClassName="OrdersRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TypeID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnTypeID" msprop:Generator_ColumnPropNameInRow="TypeID" msprop:Generator_ColumnPropNameInTable="TypeIDColumn" msprop:Generator_UserColumnName="TypeID" type="xs:int" />
+              <xs:element name="IzdelieID" msprop:Generator_ColumnVarNameInTable="columnIzdelieID" msprop:Generator_ColumnPropNameInRow="IzdelieID" msprop:Generator_ColumnPropNameInTable="IzdelieIDColumn" msprop:Generator_UserColumnName="IzdelieID" type="xs:int" />
+              <xs:element name="CustomerID" msprop:Generator_ColumnVarNameInTable="columnCustomerID" msprop:Generator_ColumnPropNameInRow="CustomerID" msprop:Generator_ColumnPropNameInTable="CustomerIDColumn" msprop:Generator_UserColumnName="CustomerID" type="xs:int" />
+              <xs:element name="MasterID" msprop:Generator_ColumnVarNameInTable="columnMasterID" msprop:Generator_ColumnPropNameInRow="MasterID" msprop:Generator_ColumnPropNameInTable="MasterIDColumn" msprop:Generator_UserColumnName="MasterID" type="xs:int" />
+              <xs:element name="DateStart" msprop:Generator_ColumnVarNameInTable="columnDateStart" msprop:Generator_ColumnPropNameInRow="DateStart" msprop:Generator_ColumnPropNameInTable="DateStartColumn" msprop:Generator_UserColumnName="DateStart" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DateStop" msprop:Generator_ColumnVarNameInTable="columnDateStop" msprop:Generator_ColumnPropNameInRow="DateStop" msprop:Generator_ColumnPropNameInTable="DateStopColumn" msprop:Generator_UserColumnName="DateStop" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Summa" msprop:Generator_ColumnVarNameInTable="columnSumma" msprop:Generator_ColumnPropNameInRow="Summa" msprop:Generator_ColumnPropNameInTable="SummaColumn" msprop:Generator_UserColumnName="Summa" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Period" msprop:Generator_ColumnVarNameInTable="columnPeriod" msprop:Generator_ColumnPropNameInRow="Period" msprop:Generator_ColumnPropNameInTable="PeriodColumn" msprop:Generator_UserColumnName="Period" type="xs:int" minOccurs="0" />
+              <xs:element name="Guarantee" msprop:Generator_ColumnVarNameInTable="columnGuarantee" msprop:Generator_ColumnPropNameInRow="Guarantee" msprop:Generator_ColumnPropNameInTable="GuaranteeColumn" msprop:Generator_UserColumnName="Guarantee" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Comment" msprop:Generator_ColumnVarNameInTable="columnComment" msprop:Generator_ColumnPropNameInRow="Comment" msprop:Generator_ColumnPropNameInTable="CommentColumn" msprop:Generator_UserColumnName="Comment" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Warranty" msprop:Generator_ColumnVarNameInTable="columnWarranty" msprop:Generator_ColumnPropNameInRow="Warranty" msprop:Generator_ColumnPropNameInTable="WarrantyColumn" msprop:Generator_UserColumnName="Warranty" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -520,24 +527,24 @@ SELECT IzdelieID, Type, Country, Company, Age, PictureID FROM Equipments WHERE (
       <xs:selector xpath=".//mstns:Customers" />
       <xs:field xpath="mstns:CustomerID" />
     </xs:unique>
-    <xs:unique name="Orders_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:Orders" />
-      <xs:field xpath="mstns:TypeID" />
+    <xs:unique name="Equipments_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Equipments" />
+      <xs:field xpath="mstns:IzdelieID" />
     </xs:unique>
     <xs:unique name="Masters_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Masters" />
       <xs:field xpath="mstns:MasterID" />
     </xs:unique>
-    <xs:unique name="Equipments_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:Equipments" />
-      <xs:field xpath="mstns:IzdelieID" />
+    <xs:unique name="Orders_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Orders" />
+      <xs:field xpath="mstns:TypeID" />
     </xs:unique>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
       <msdata:Relationship name="FK_Заказы_Заказчики" msdata:parent="Customers" msdata:child="Orders" msdata:parentkey="CustomerID" msdata:childkey="CustomerID" msprop:Generator_UserChildTable="Orders" msprop:Generator_ChildPropName="GetOrdersRows" msprop:Generator_UserRelationName="FK_Заказы_Заказчики" msprop:Generator_ParentPropName="CustomersRow" msprop:Generator_RelationVarName="relationFK_Заказы_Заказчики" msprop:Generator_UserParentTable="Customers" />
-      <msdata:Relationship name="FK_Заказы_Мастера" msdata:parent="Masters" msdata:child="Orders" msdata:parentkey="MasterID" msdata:childkey="MasterID" msprop:Generator_UserChildTable="Orders" msprop:Generator_ChildPropName="GetOrdersRows" msprop:Generator_UserRelationName="FK_Заказы_Мастера" msprop:Generator_RelationVarName="relationFK_Заказы_Мастера" msprop:Generator_UserParentTable="Masters" msprop:Generator_ParentPropName="MastersRow" />
-      <msdata:Relationship name="FK_Заказы_Ремонтируемые_x0020_изделия" msdata:parent="Equipments" msdata:child="Orders" msdata:parentkey="IzdelieID" msdata:childkey="IzdelieID" msprop:Generator_UserChildTable="Orders" msprop:Generator_ChildPropName="GetOrdersRows" msprop:Generator_UserRelationName="FK_Заказы_Ремонтируемые изделия" msprop:Generator_RelationVarName="relationFK_Заказы_Ремонтируемые_изделия" msprop:Generator_UserParentTable="Equipments" msprop:Generator_ParentPropName="EquipmentsRow" />
+      <msdata:Relationship name="FK_Заказы_Мастера" msdata:parent="Masters" msdata:child="Orders" msdata:parentkey="MasterID" msdata:childkey="MasterID" msprop:Generator_UserChildTable="Orders" msprop:Generator_ChildPropName="GetOrdersRows" msprop:Generator_UserRelationName="FK_Заказы_Мастера" msprop:Generator_ParentPropName="MastersRow" msprop:Generator_RelationVarName="relationFK_Заказы_Мастера" msprop:Generator_UserParentTable="Masters" />
+      <msdata:Relationship name="FK_Заказы_Ремонтируемые_x0020_изделия" msdata:parent="Equipments" msdata:child="Orders" msdata:parentkey="IzdelieID" msdata:childkey="IzdelieID" msprop:Generator_UserChildTable="Orders" msprop:Generator_ChildPropName="GetOrdersRows" msprop:Generator_UserRelationName="FK_Заказы_Ремонтируемые изделия" msprop:Generator_ParentPropName="EquipmentsRow" msprop:Generator_RelationVarName="relationFK_Заказы_Ремонтируемые_изделия" msprop:Generator_UserParentTable="Equipments" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

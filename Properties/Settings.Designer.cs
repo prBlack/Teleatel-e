@@ -26,7 +26,7 @@ namespace Teleatel_e.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-7PH2PHN;Initial Catalog=\'Телеателье \"Спектр\"\';Integrated Secu" +
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=FUJI\\SQLSERVER;Initial Catalog=Teleatel_e;Integrated Secu" +
             "rity=True")]
         public string Телеателье__Спектр_ConnectionString {
             get {
@@ -37,11 +37,21 @@ namespace Teleatel_e.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-7PH2PHN;Initial Catalog=\'Телеателье \"Спектр\"\';Persist Securit" +
-            "y Info=True;User ID=User1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=FUJI\\SQLSERVER;Initial Catalog=Teleatel_e;Persist Securit" +
+            "y Info=True;User ID=Fujitsu")]
         public string Телеателье__Спектр_ConnectionString1 {
             get {
                 return ((string)(this["Телеателье__Спектр_ConnectionString1"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=FUJI\\SQLSERVER;Initial Catalog=Teleatel_e;User ID=sa;Password=1234")]
+        public string Teleatel_eConnectionString {
+            get {
+                return ((string)(this["Teleatel_eConnectionString"]));
             }
         }
     }

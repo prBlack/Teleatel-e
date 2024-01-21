@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Products.cs">
+    <Compile Include="MgrArmForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Products.Designer.cs">
-      <DependentUpon>Products.cs</DependentUpon>
+    <Compile Include="MgrArmForm.Designer.cs">
+      <DependentUpon>MgrArmForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -58,26 +58,19 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Masters.cs">
+    <Compile Include="MgrLoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Masters.Designer.cs">
-      <DependentUpon>Masters.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Orders.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Orders.Designer.cs">
-      <DependentUpon>Orders.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Customers.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Customers.Designer.cs">
-      <DependentUpon>Customers.cs</DependentUpon>
+    <Compile Include="MgrLoginForm.Designer.cs">
+      <DependentUpon>MgrLoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Teleatel_eDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Teleatel_eDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="_Телеателье__Спектр_DataSet.cs">
       <DependentUpon>_Телеателье__Спектр_DataSet.xsd</DependentUpon>
     </Compile>
@@ -86,20 +79,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>_Телеателье__Спектр_DataSet.xsd</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Customers.resx">
-      <DependentUpon>Customers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Products.resx">
-      <DependentUpon>Products.cs</DependentUpon>
+    <EmbeddedResource Include="MgrArmForm.resx">
+      <DependentUpon>MgrArmForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Masters.resx">
-      <DependentUpon>Masters.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Orders.resx">
-      <DependentUpon>Orders.cs</DependentUpon>
+    <EmbeddedResource Include="MgrLoginForm.resx">
+      <DependentUpon>MgrLoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -119,6 +106,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Teleatel_eDataSet.xsc">
+      <DependentUpon>Teleatel_eDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Teleatel_eDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Teleatel_eDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Teleatel_eDataSet.xss">
+      <DependentUpon>Teleatel_eDataSet.xsd</DependentUpon>
+    </None>
     <None Include="_Телеателье__Спектр_DataSet.xsc">
       <DependentUpon>_Телеателье__Спектр_DataSet.xsd</DependentUpon>
     </None>

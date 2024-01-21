@@ -12,32 +12,33 @@ namespace Teleatel_e
 {
     public partial class MainForm : Form
     {
-        private  Orders orders;
-        private Masters masters;
-        private Customers customers;
-        private Products products;
+
         public MainForm()
         {
             InitializeComponent();
         }
 
+        public bool IsGranted;
         private void button1_Click(object sender, EventArgs e)
         {
-            orders = new Orders(); orders.Visible = true;
+            ;
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            masters = new Masters(); masters.Visible = true;
+            MgrArmForm MgrArmFrm = new MgrArmForm();
+            MgrArmFrm.PerentForm = this;
+            MgrArmFrm.Show();
+            this.Enabled = false;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            customers = new Customers(); customers.Visible = true;
+           ;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            products = new Products(); products.Visible = true;
+            ;
         }
     }
 }
