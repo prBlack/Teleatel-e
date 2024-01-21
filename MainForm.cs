@@ -28,7 +28,7 @@ namespace Teleatel_e
             MgrArmForm MgrArmFrm = new MgrArmForm();
             MgrArmFrm.PerentForm = this;
             MgrArmFrm.Show();
-            this.Enabled = false;
+            //this.Enabled = false;
         }
 
         private void button3_Click(object sender, EventArgs e)

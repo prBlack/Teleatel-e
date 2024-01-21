@@ -26,22 +26,20 @@ namespace Teleatel_e
             {
                 this.PerentForm.Enabled = true;
                 this.IsGranted = true;
+                this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             else
             {
                 MessageBox.Show("Проль введен не верно");
-                this.PerentForm.Close();
-                this.Close();
+                this.DialogResult = DialogResult.Cancel;
+                //this.Close();
             }
         }
 
         private void MgrLoginForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (this.IsGranted == false)
-            {
-                this.PerentForm.Close();
-            }
+            ;
         }
     }
 }

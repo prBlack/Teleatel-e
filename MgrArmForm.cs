@@ -37,8 +37,15 @@ namespace Teleatel_e
         {
             MgrLoginForm MgrLoginFrm = new MgrLoginForm();
             MgrLoginFrm.PerentForm = this;
-            MgrLoginFrm.Show();
-            this.Enabled = false;
+            if (MgrLoginFrm.ShowDialog(this) == DialogResult.OK)
+            {
+                this.Enabled = true;
+                this.IsGranted = true;
+            }
+            else
+            {
+                this.IsGranted = false;
+            }
         }
 
         private void LoadData()
@@ -98,10 +105,19 @@ namespace Teleatel_e
         private void MgrArmForm_Load(object sender, EventArgs e)
         {
             this.ShowLogin();
+            if (this.IsGranted == false)
+            {
+                this.PerentForm.Enabled = true;
+                this.Close();
+            }
             sqlConnection = new SqlConnection(@"Data Source=FUJI\SQLSERVER;Initial Catalog=Teleatel_e;Persist Security Info=True;User ID=sa;Password=1234");
             sqlConnection.Open();
             LoadData();
         }
 
+        private void ReloadDataBtn_Click(object sender, EventArgs e)
+        {
+            ReloadData();
+        }
     }
 }
