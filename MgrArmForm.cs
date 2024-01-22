@@ -33,6 +33,8 @@ namespace Teleatel_e
         private SqlDataAdapter sqlDataAdapter = null;
 
         private DataSet dataSet = null;
+
+        private bool newRowAdding = false;
         private void ShowLogin()
         {
             MgrLoginForm MgrLoginFrm = new MgrLoginForm();
@@ -48,11 +50,11 @@ namespace Teleatel_e
             }
         }
 
-        private void LoadData()
+        private void LoadMastersData()
         {
             try
             {
-                sqlDataAdapter = new SqlDataAdapter("SELECT *, 'Уволить' AS [SetQuit] FROM Masters", sqlConnection);
+                sqlDataAdapter = new SqlDataAdapter("SELECT *, 'Delete' AS [Delete] FROM Masters ORDER BY Masters.MasterFio", sqlConnection);
 
                 sqlBuilder = new SqlCommandBuilder(sqlDataAdapter);
 
@@ -79,7 +81,7 @@ namespace Teleatel_e
             }
         }
 
-        private void LoadChart()
+        private void LoadMastersChart()
         {
             try
             {
@@ -112,7 +114,7 @@ namespace Teleatel_e
             }
         }
 
-        private void ReloadData()
+        private void ReloadMastersData()
         {
             try
             {
@@ -127,7 +129,7 @@ namespace Teleatel_e
                 {
                     DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
 
-                    dataGridView2[5, i] = linkCell;
+                    dataGridView2[6, i] = linkCell;
                 }
             }
             catch (Exception ex)
@@ -136,7 +138,7 @@ namespace Teleatel_e
             }
         }
 
-        private void ReloadChart()
+        private void ReloadMastersChart()
         {
             try
             {
@@ -170,6 +172,27 @@ namespace Teleatel_e
             }
         }
 
+
+        private void LoadOrdersData()
+        {
+            try
+            {
+                SqlDataAdapter daOrders = new SqlDataAdapter("SELECT * FROM TotalCompleteOrdersView", sqlConnection);
+
+                SqlCommandBuilder cbOrders = new SqlCommandBuilder(daOrders);
+
+                DataSet dsOrders = new DataSet();
+                
+                daOrders.Fill(dsOrders);
+
+                orderComplateGridView.DataSource = dsOrders.Tables[0];
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void MgrArmForm_Load(object sender, EventArgs e)
         {
             this.ShowLogin();
@@ -180,14 +203,15 @@ namespace Teleatel_e
             }
             sqlConnection = new SqlConnection(@"Data Source=FUJI\SQLSERVER;Initial Catalog=Teleatel_e;Persist Security Info=True;User ID=sa;Password=1234");
             sqlConnection.Open();
-            LoadData();
-            LoadChart();
+            LoadMastersData();
+            LoadMastersChart();
+            LoadOrdersData();
         }
 
         private void ReloadDataBtn_Click(object sender, EventArgs e)
         {
-            ReloadData();
-            ReloadChart();
+            ReloadMastersData();
+            ReloadMastersChart();
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -198,9 +222,9 @@ namespace Teleatel_e
                 {
                     string task = dataGridView2.Rows[e.RowIndex].Cells[6].Value.ToString();
 
-                    if (task == "Уволить")
+                    if (task == "Delete")
                     {
-                        if (MessageBox.Show("Уволить?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                        if (MessageBox.Show("Удалить?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                             == DialogResult.Yes) {
                             int rowIndex = e.RowIndex;
 
@@ -211,15 +235,36 @@ namespace Teleatel_e
                             sqlDataAdapter.Update(dataSet, "Masters");
                         }
                     } 
-                    else if (task == "Добавить")
+                    else if (task == "Insert")
+                    {
+                        int rowIndex = dataGridView2.Rows.Count - 2;
+
+                        DataRow row = dataSet.Tables["Masters"].NewRow();
+
+                        row["MasterFio"] = dataGridView2.Rows[rowIndex].Cells["MasterFio"].Value;
+                        row["Experience"] = dataGridView2.Rows[rowIndex].Cells["Experience"].Value;
+                        row["Defect"] = dataGridView2.Rows[rowIndex].Cells["Defect"].Value;
+                        row["RepairAll"] = dataGridView2.Rows[rowIndex].Cells["RepairAll"].Value;
+                        row["Quited"] = dataGridView2.Rows[rowIndex].Cells["Quited"].Value;
+
+                        dataSet.Tables["Masters"].Rows.Add(row);
+
+                        dataSet.Tables["Masters"].Rows.RemoveAt(dataSet.Tables["Masters"].Rows.Count - 1);
+
+                        dataGridView2.Rows.RemoveAt(dataGridView2.Rows.Count - 2);
+
+                        dataGridView2.Rows[e.RowIndex].Cells[6].Value = "Delete";
+
+                        sqlDataAdapter.Update(dataSet, "Masters");
+
+                        newRowAdding = false;
+                    }
+                    else if (task == "Update")
                     {
 
                     }
-                    else if (task == "Изменить")
-                    {
-
-                    }
-                    ReloadData();
+                    ReloadMastersData();
+                    ReloadMastersChart();
                 }
             }
             catch (Exception ex)
@@ -230,7 +275,26 @@ namespace Teleatel_e
 
         private void dataGridView2_UserAddedRow(object sender, DataGridViewRowEventArgs e)
         {
+            try
+            {
+                if (newRowAdding == false)
+                {
+                    newRowAdding = true;
 
+                    int lastRow = dataGridView2.Rows.Count - 2;
+
+                    DataGridViewRow row = dataGridView2.Rows[lastRow];
+
+                    DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
+
+                    row.Cells["Delete"].Value = "Insert";
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
