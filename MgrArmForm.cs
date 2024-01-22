@@ -79,6 +79,39 @@ namespace Teleatel_e
             }
         }
 
+        private void LoadChart()
+        {
+            try
+            {
+                SqlDataAdapter sqlChartAdapter = new SqlDataAdapter("SELECT * FROM TotalCostByMastersView", sqlConnection);
+
+                SqlCommandBuilder sqlChartBuilder = new SqlCommandBuilder(sqlChartAdapter);
+
+                DataSet dataChartSet = new DataSet();
+                BindingSource bindingSoure = new BindingSource();
+                
+                sqlChartAdapter.Fill(dataChartSet);
+
+                TotalCostMasterChart.DataSource = dataChartSet.Tables[0];
+
+                //bindingSoure.DataMember = "TotalCostByMastersView";
+
+                TotalCostMasterChart.Series[0].XValueMember = (dataChartSet.Tables[0].Columns[0]).ToString();
+                TotalCostMasterChart.Series[0].YValueMembers = (dataChartSet.Tables[0].Columns[1]).ToString();
+                TotalCostMasterChart.Series[0]["PieLabelStyle"] = "Disabled";
+                TotalCostMasterChart.ChartAreas[0].AxisX.Interval = 1;
+                TotalCostMasterChart.ChartAreas[0].AxisX.LabelStyle.Angle = -60;
+                TotalCostMasterChart.ChartAreas[0].AxisX.IsLabelAutoFit = false;
+                TotalCostMasterChart.DataBind();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void ReloadData()
         {
             try
@@ -102,6 +135,41 @@ namespace Teleatel_e
                 MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void ReloadChart()
+        {
+            try
+            {
+                             
+                SqlDataAdapter sqlChartAdapter = new SqlDataAdapter("SELECT * FROM TotalCostByMastersView", sqlConnection);
+
+                SqlCommandBuilder sqlChartBuilder = new SqlCommandBuilder(sqlChartAdapter);
+
+                DataSet dataChartSet = new DataSet();
+                BindingSource bindingSoure = new BindingSource();
+
+                sqlChartAdapter.Fill(dataChartSet);
+
+                TotalCostMasterChart.DataSource = dataChartSet.Tables[0];
+
+                //bindingSoure.DataMember = "TotalCostByMastersView";
+
+                TotalCostMasterChart.Series[0].XValueMember = (dataChartSet.Tables[0].Columns[0]).ToString();
+                TotalCostMasterChart.Series[0].YValueMembers = (dataChartSet.Tables[0].Columns[1]).ToString();
+                TotalCostMasterChart.Series[0]["PieLabelStyle"] = "Disabled";
+                TotalCostMasterChart.ChartAreas[0].AxisX.Interval = 1;
+                TotalCostMasterChart.ChartAreas[0].AxisX.LabelStyle.Angle = -60;
+                TotalCostMasterChart.ChartAreas[0].AxisX.IsLabelAutoFit = false;
+                TotalCostMasterChart.DataBind();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void MgrArmForm_Load(object sender, EventArgs e)
         {
             this.ShowLogin();
@@ -113,11 +181,13 @@ namespace Teleatel_e
             sqlConnection = new SqlConnection(@"Data Source=FUJI\SQLSERVER;Initial Catalog=Teleatel_e;Persist Security Info=True;User ID=sa;Password=1234");
             sqlConnection.Open();
             LoadData();
+            LoadChart();
         }
 
         private void ReloadDataBtn_Click(object sender, EventArgs e)
         {
             ReloadData();
+            ReloadChart();
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
