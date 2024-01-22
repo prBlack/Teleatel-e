@@ -119,5 +119,48 @@ namespace Teleatel_e
         {
             ReloadData();
         }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if(e.ColumnIndex == 6)
+                {
+                    string task = dataGridView2.Rows[e.RowIndex].Cells[6].Value.ToString();
+
+                    if (task == "Уволить")
+                    {
+                        if (MessageBox.Show("Уволить?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                            == DialogResult.Yes) {
+                            int rowIndex = e.RowIndex;
+
+                            dataGridView2.Rows.RemoveAt(rowIndex);
+
+                            dataSet.Tables["Masters"].Rows[rowIndex].Delete();
+
+                            sqlDataAdapter.Update(dataSet, "Masters");
+                        }
+                    } 
+                    else if (task == "Добавить")
+                    {
+
+                    }
+                    else if (task == "Изменить")
+                    {
+
+                    }
+                    ReloadData();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dataGridView2_UserAddedRow(object sender, DataGridViewRowEventArgs e)
+        {
+
+        }
     }
 }
