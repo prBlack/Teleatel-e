@@ -38,7 +38,9 @@ namespace Teleatel_e
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ;
+            BuhArmForm BuhArmFrm = new BuhArmForm();
+            BuhArmFrm.PerentForm = this;
+            BuhArmFrm.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)
