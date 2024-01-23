@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuhArmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuhArmForm.Designer.cs">
+      <DependentUpon>BuhArmForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MgrArmForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +86,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>_Телеателье__Спектр_DataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BuhArmForm.resx">
+      <DependentUpon>BuhArmForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MgrArmForm.resx">
       <DependentUpon>MgrArmForm.cs</DependentUpon>
     </EmbeddedResource>

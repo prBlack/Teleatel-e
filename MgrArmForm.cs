@@ -26,6 +26,8 @@ namespace Teleatel_e
             this.PerentForm.Enabled = true;
         }
 
+        public String authCode = "11111";
+
         private SqlConnection sqlConnection = null;
 
         private SqlCommandBuilder sqlBuilder = null;
@@ -39,6 +41,7 @@ namespace Teleatel_e
         {
             MgrLoginForm MgrLoginFrm = new MgrLoginForm();
             MgrLoginFrm.PerentForm = this;
+            MgrLoginFrm.authCode = this.authCode;
             if (MgrLoginFrm.ShowDialog(this) == DialogResult.OK)
             {
                 this.Enabled = true;
@@ -83,34 +86,38 @@ namespace Teleatel_e
 
         private void LoadMastersChart()
         {
-            try
+            if (IsGranted)
             {
-                SqlDataAdapter sqlChartAdapter = new SqlDataAdapter("SELECT * FROM TotalCostByMastersView", sqlConnection);
 
-                SqlCommandBuilder sqlChartBuilder = new SqlCommandBuilder(sqlChartAdapter);
+                try
+                {
+                    SqlDataAdapter sqlChartAdapter = new SqlDataAdapter("SELECT * FROM TotalCostByMastersView", sqlConnection);
 
-                DataSet dataChartSet = new DataSet();
-                BindingSource bindingSoure = new BindingSource();
-                
-                sqlChartAdapter.Fill(dataChartSet);
+                    SqlCommandBuilder sqlChartBuilder = new SqlCommandBuilder(sqlChartAdapter);
 
-                TotalCostMasterChart.DataSource = dataChartSet.Tables[0];
+                    DataSet dataChartSet = new DataSet();
+                    BindingSource bindingSoure = new BindingSource();
 
-                //bindingSoure.DataMember = "TotalCostByMastersView";
+                    sqlChartAdapter.Fill(dataChartSet);
 
-                TotalCostMasterChart.Series[0].XValueMember = (dataChartSet.Tables[0].Columns[0]).ToString();
-                TotalCostMasterChart.Series[0].YValueMembers = (dataChartSet.Tables[0].Columns[1]).ToString();
-                TotalCostMasterChart.Series[0]["PieLabelStyle"] = "Disabled";
-                TotalCostMasterChart.ChartAreas[0].AxisX.Interval = 1;
-                TotalCostMasterChart.ChartAreas[0].AxisX.LabelStyle.Angle = -60;
-                TotalCostMasterChart.ChartAreas[0].AxisX.IsLabelAutoFit = false;
-                TotalCostMasterChart.DataBind();
+                    TotalCostMasterChart.DataSource = dataChartSet.Tables[0];
+
+                    //bindingSoure.DataMember = "TotalCostByMastersView";
+
+                    TotalCostMasterChart.Series[0].XValueMember = (dataChartSet.Tables[0].Columns[0]).ToString();
+                    TotalCostMasterChart.Series[0].YValueMembers = (dataChartSet.Tables[0].Columns[1]).ToString();
+                    TotalCostMasterChart.Series[0]["PieLabelStyle"] = "Disabled";
+                    TotalCostMasterChart.ChartAreas[0].AxisX.Interval = 1;
+                    TotalCostMasterChart.ChartAreas[0].AxisX.LabelStyle.Angle = -60;
+                    TotalCostMasterChart.ChartAreas[0].AxisX.IsLabelAutoFit = false;
+                    TotalCostMasterChart.DataBind();
 
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -173,25 +180,48 @@ namespace Teleatel_e
         }
 
 
-        private void LoadOrdersData()
+        private void LoadToGrid(string sqlString, SqlConnection sqlConn, DataGridView frmDg)
         {
             try
             {
-                SqlDataAdapter daOrders = new SqlDataAdapter("SELECT * FROM TotalCompleteOrdersView", sqlConnection);
+                SqlDataAdapter da = new SqlDataAdapter(sqlString, sqlConn);
 
-                SqlCommandBuilder cbOrders = new SqlCommandBuilder(daOrders);
+                SqlCommandBuilder cb = new SqlCommandBuilder(da);
 
-                DataSet dsOrders = new DataSet();
-                
-                daOrders.Fill(dsOrders);
+                DataSet ds = new DataSet();
 
-                orderComplateGridView.DataSource = dsOrders.Tables[0];
+                da.Fill(ds);
+
+                frmDg.DataSource = ds.Tables[0];
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void LoadOrdersData()
+        {
+            try
+            {
+                String TotalCompleteOrders = "SELECT * FROM TotalCompleteOrdersView";
+                LoadToGrid(TotalCompleteOrders, sqlConnection, orderComplateGridView);
+                TotalCompleteOrders = "SELECT * FROM TotalGuarateeCompleteOrdersView";
+                LoadToGrid(TotalCompleteOrders, sqlConnection, GarantieOrderGridView);
+                TotalCompleteOrders = "SELECT * FROM IncompleteOrdersView";
+                LoadToGrid(TotalCompleteOrders, sqlConnection, IncomplateOrderGridView);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LoadCustomerData()
+        {
+            String TotalCostByCustomers = "SELECT * FROM TotalCostByCustomersView";
+            LoadToGrid(TotalCostByCustomers, sqlConnection, TotalCostByCustomerGridView);
         }
         private void MgrArmForm_Load(object sender, EventArgs e)
         {
@@ -206,6 +236,7 @@ namespace Teleatel_e
             LoadMastersData();
             LoadMastersChart();
             LoadOrdersData();
+            LoadCustomerData();
         }
 
         private void ReloadDataBtn_Click(object sender, EventArgs e)
@@ -295,6 +326,12 @@ namespace Teleatel_e
             {
                 MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void CustomerUpdateBtn_Click(object sender, EventArgs e)
+        {
+            String TotalCostByCustomers = "SELECT * FROM TotalCostByCustomersView";
+            LoadToGrid(TotalCostByCustomers, sqlConnection, TotalCostByCustomerGridView);
         }
     }
 }

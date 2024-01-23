@@ -17,12 +17,13 @@ namespace Teleatel_e
             InitializeComponent();
         }
 
+        public String authCode = "";
         public bool IsGranted = false;
 
         public Form PerentForm;
         private void MgrLoginBtn_Click(object sender, EventArgs e)
         {
-            if (MgrPwdBox.Text == "11111")
+            if (MgrPwdBox.Text == this.authCode)
             {
                 this.PerentForm.Enabled = true;
                 this.IsGranted = true;

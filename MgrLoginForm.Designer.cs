@@ -37,24 +37,27 @@ namespace Teleatel_e
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(19, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(210, 17);
+            this.label1.Size = new System.Drawing.Size(148, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Введите пароль руководителя";
+            this.label1.Text = "Введите пароль";
             // 
             // MgrPwdBox
             // 
+            this.MgrPwdBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.MgrPwdBox.Location = new System.Drawing.Point(22, 61);
             this.MgrPwdBox.Name = "MgrPwdBox";
-            this.MgrPwdBox.Size = new System.Drawing.Size(214, 22);
+            this.MgrPwdBox.Size = new System.Drawing.Size(214, 27);
             this.MgrPwdBox.TabIndex = 1;
             // 
             // MgrLoginPwd
             // 
-            this.MgrLoginPwd.Location = new System.Drawing.Point(259, 61);
+            this.MgrLoginPwd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MgrLoginPwd.Location = new System.Drawing.Point(242, 61);
             this.MgrLoginPwd.Name = "MgrLoginPwd";
-            this.MgrLoginPwd.Size = new System.Drawing.Size(101, 23);
+            this.MgrLoginPwd.Size = new System.Drawing.Size(118, 27);
             this.MgrLoginPwd.TabIndex = 2;
             this.MgrLoginPwd.Text = "Вход";
             this.MgrLoginPwd.UseVisualStyleBackColor = true;
@@ -70,7 +73,7 @@ namespace Teleatel_e
             this.Controls.Add(this.label1);
             this.Name = "MgrLoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Авторизация Руководителя";
+            this.Text = "Форма авторизации";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MgrLoginForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();

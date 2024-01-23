@@ -32,6 +32,10 @@ namespace Teleatel_e
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.mgrTabControl = new System.Windows.Forms.TabControl();
             this.tabPageMaster = new System.Windows.Forms.TabPage();
@@ -39,22 +43,27 @@ namespace Teleatel_e
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.ReloadDataBtn = new System.Windows.Forms.Button();
             this.tabPageOrders = new System.Windows.Forms.TabPage();
-            this.tabPageCustomers = new System.Windows.Forms.TabPage();
-            this.orderComplateGridView = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.IncomplateOrderGridView = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.GarantieOrderGridView = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
+            this.GarantieOrderGridView = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.IncomplateOrderGridView = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.orderComplateGridView = new System.Windows.Forms.DataGridView();
+            this.tabPageCustomers = new System.Windows.Forms.TabPage();
+            this.TotalCostByCustomerGridView = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.CustomerUpdateBtn = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.mgrTabControl.SuspendLayout();
             this.tabPageMaster.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TotalCostMasterChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabPageOrders.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.orderComplateGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IncomplateOrderGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GarantieOrderGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IncomplateOrderGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderComplateGridView)).BeginInit();
+            this.tabPageCustomers.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TotalCostByCustomerGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -157,45 +166,34 @@ namespace Teleatel_e
             this.tabPageOrders.Text = "Заказы";
             this.tabPageOrders.UseVisualStyleBackColor = true;
             // 
-            // tabPageCustomers
+            // label3
             // 
-            this.tabPageCustomers.Location = new System.Drawing.Point(4, 25);
-            this.tabPageCustomers.Name = "tabPageCustomers";
-            this.tabPageCustomers.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageCustomers.Size = new System.Drawing.Size(1054, 548);
-            this.tabPageCustomers.TabIndex = 2;
-            this.tabPageCustomers.Text = "Заказчики";
-            this.tabPageCustomers.UseVisualStyleBackColor = true;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(7, 116);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(199, 20);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "В стадии выполнения:";
             // 
-            // orderComplateGridView
+            // GarantieOrderGridView
             // 
-            this.orderComplateGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.orderComplateGridView.Location = new System.Drawing.Point(7, 36);
-            this.orderComplateGridView.Name = "orderComplateGridView";
-            this.orderComplateGridView.RowHeadersWidth = 51;
-            this.orderComplateGridView.RowTemplate.Height = 24;
-            this.orderComplateGridView.Size = new System.Drawing.Size(515, 48);
-            this.orderComplateGridView.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(7, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(281, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Выполненные заказы на ремонт";
-            // 
-            // IncomplateOrderGridView
-            // 
-            this.IncomplateOrderGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.IncomplateOrderGridView.Location = new System.Drawing.Point(7, 139);
-            this.IncomplateOrderGridView.Name = "IncomplateOrderGridView";
-            this.IncomplateOrderGridView.RowHeadersWidth = 51;
-            this.IncomplateOrderGridView.RowTemplate.Height = 24;
-            this.IncomplateOrderGridView.Size = new System.Drawing.Size(1041, 437);
-            this.IncomplateOrderGridView.TabIndex = 2;
+            this.GarantieOrderGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GarantieOrderGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.GarantieOrderGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GarantieOrderGridView.Location = new System.Drawing.Point(536, 36);
+            this.GarantieOrderGridView.Name = "GarantieOrderGridView";
+            this.GarantieOrderGridView.RowHeadersWidth = 51;
+            this.GarantieOrderGridView.RowTemplate.Height = 24;
+            this.GarantieOrderGridView.Size = new System.Drawing.Size(512, 65);
+            this.GarantieOrderGridView.TabIndex = 4;
             // 
             // label2
             // 
@@ -207,25 +205,105 @@ namespace Teleatel_e
             this.label2.TabIndex = 3;
             this.label2.Text = "Из них по гарантии:";
             // 
-            // GarantieOrderGridView
+            // IncomplateOrderGridView
             // 
-            this.GarantieOrderGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GarantieOrderGridView.Location = new System.Drawing.Point(536, 36);
-            this.GarantieOrderGridView.Name = "GarantieOrderGridView";
-            this.GarantieOrderGridView.RowHeadersWidth = 51;
-            this.GarantieOrderGridView.RowTemplate.Height = 24;
-            this.GarantieOrderGridView.Size = new System.Drawing.Size(512, 49);
-            this.GarantieOrderGridView.TabIndex = 4;
+            this.IncomplateOrderGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.IncomplateOrderGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.IncomplateOrderGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.IncomplateOrderGridView.Location = new System.Drawing.Point(7, 139);
+            this.IncomplateOrderGridView.Name = "IncomplateOrderGridView";
+            this.IncomplateOrderGridView.RowHeadersWidth = 51;
+            this.IncomplateOrderGridView.RowTemplate.Height = 24;
+            this.IncomplateOrderGridView.Size = new System.Drawing.Size(1041, 437);
+            this.IncomplateOrderGridView.TabIndex = 2;
             // 
-            // label3
+            // label1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(7, 104);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(199, 20);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "В стадии выполнения:";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(7, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(281, 20);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Выполненные заказы на ремонт";
+            // 
+            // orderComplateGridView
+            // 
+            this.orderComplateGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.orderComplateGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.orderComplateGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.orderComplateGridView.Location = new System.Drawing.Point(7, 36);
+            this.orderComplateGridView.Name = "orderComplateGridView";
+            this.orderComplateGridView.RowHeadersWidth = 51;
+            this.orderComplateGridView.RowTemplate.Height = 24;
+            this.orderComplateGridView.Size = new System.Drawing.Size(515, 65);
+            this.orderComplateGridView.TabIndex = 0;
+            // 
+            // tabPageCustomers
+            // 
+            this.tabPageCustomers.Controls.Add(this.CustomerUpdateBtn);
+            this.tabPageCustomers.Controls.Add(this.label4);
+            this.tabPageCustomers.Controls.Add(this.TotalCostByCustomerGridView);
+            this.tabPageCustomers.Location = new System.Drawing.Point(4, 25);
+            this.tabPageCustomers.Name = "tabPageCustomers";
+            this.tabPageCustomers.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageCustomers.Size = new System.Drawing.Size(1054, 691);
+            this.tabPageCustomers.TabIndex = 2;
+            this.tabPageCustomers.Text = "Заказчики";
+            this.tabPageCustomers.UseVisualStyleBackColor = true;
+            // 
+            // TotalCostByCustomerGridView
+            // 
+            this.TotalCostByCustomerGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TotalCostByCustomerGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.TotalCostByCustomerGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TotalCostByCustomerGridView.Location = new System.Drawing.Point(7, 47);
+            this.TotalCostByCustomerGridView.Name = "TotalCostByCustomerGridView";
+            this.TotalCostByCustomerGridView.RowHeadersWidth = 51;
+            this.TotalCostByCustomerGridView.RowTemplate.Height = 24;
+            this.TotalCostByCustomerGridView.Size = new System.Drawing.Size(1041, 638);
+            this.TotalCostByCustomerGridView.TabIndex = 0;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(7, 21);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(343, 20);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Распределение выручки по заказчикам";
+            // 
+            // CustomerUpdateBtn
+            // 
+            this.CustomerUpdateBtn.Location = new System.Drawing.Point(370, 7);
+            this.CustomerUpdateBtn.Name = "CustomerUpdateBtn";
+            this.CustomerUpdateBtn.Size = new System.Drawing.Size(185, 34);
+            this.CustomerUpdateBtn.TabIndex = 2;
+            this.CustomerUpdateBtn.Text = "Обновить информацию";
+            this.CustomerUpdateBtn.UseVisualStyleBackColor = true;
+            this.CustomerUpdateBtn.Click += new System.EventHandler(this.CustomerUpdateBtn_Click);
             // 
             // MgrArmForm
             // 
@@ -235,6 +313,7 @@ namespace Teleatel_e
             this.MinimizeBox = false;
             this.Name = "MgrArmForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "АРМ Руководителя || Телеателье \"Спектр\"";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MgrArmForm_FormClosing);
             this.Load += new System.EventHandler(this.MgrArmForm_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -244,9 +323,12 @@ namespace Teleatel_e
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabPageOrders.ResumeLayout(false);
             this.tabPageOrders.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.orderComplateGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IncomplateOrderGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GarantieOrderGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IncomplateOrderGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderComplateGridView)).EndInit();
+            this.tabPageCustomers.ResumeLayout(false);
+            this.tabPageCustomers.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TotalCostByCustomerGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,5 +350,8 @@ namespace Teleatel_e
         private System.Windows.Forms.DataGridView IncomplateOrderGridView;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView orderComplateGridView;
+        private System.Windows.Forms.Button CustomerUpdateBtn;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView TotalCostByCustomerGridView;
     }
 }
