@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
 
 
 
@@ -22,7 +23,8 @@ namespace Teleatel_e
             InitializeComponent();
         }
 
-        public string Conn = @"Data Source=";
+        private string sqlConnectionString = "";
+        public string sqlConnectionStringTmpl = @"Data Source=[SERVER];Initial Catalog=master;Integrated Security=True";
         public bool IsGranted;
         private void button1_Click(object sender, EventArgs e)
         {
@@ -32,6 +34,7 @@ namespace Teleatel_e
         {
             MgrArmForm MgrArmFrm = new MgrArmForm();
             MgrArmFrm.PerentForm = this;
+            MgrArmFrm.sqlConnectionString = textBox1.Text;
             MgrArmFrm.Show();
             //this.Enabled = false;
         }
@@ -40,6 +43,7 @@ namespace Teleatel_e
         {
             BuhArmForm BuhArmFrm = new BuhArmForm();
             BuhArmFrm.PerentForm = this;
+            BuhArmFrm.sqlConnectionString = textBox1.Text;
             BuhArmFrm.Show();
         }
 
@@ -59,10 +63,6 @@ namespace Teleatel_e
             if (theAvailableSqlServers != null)
             {
                 comboBox1.DataSource = theAvailableSqlServers;
-                foreach (string NameServer in theAvailableSqlServers)
-                {
-                    richTextBox1.Text += NameServer + Environment.NewLine;
-                }
             }
             else
             {
@@ -72,16 +72,26 @@ namespace Teleatel_e
 
         private void button5_Click(object sender, EventArgs e)
         {
-            string sn = comboBox1.SelectedItem.ToString();
+            String sn = comboBox1.SelectedItem.ToString();
             try
             {
-                Conn += sn;
-                Conn += ";Integrated Security=True;";
-                SqlConnection con = new SqlConnection(Conn);
+                SqlConnection con = new SqlConnection(this.textBox1.Text);
                 con.Open();
+                DataSet ds = new DataSet();
+                string[] DataBases;
+                SqlDataAdapter da = new SqlDataAdapter("SELECT [name] FROM master.dbo.sysdatabases WHERE dbid > 4", con);
+                da.Fill(ds);
+                DataTable dt = new DataTable();
+                dt = ds.Tables[0];
 
-                SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM sys.database", con);
-                comboBox2.Items.Add(da);
+                DataBases = Array.ConvertAll<DataRow, string>(dt.Rows.Cast<DataRow>().ToArray(), r => r[0].ToString());
+                //foreach (DataRow dr in dt.Rows)
+                //{
+                //    DataBases. dr[0].ToString());
+                //}
+                comboBox2.DataSource = DataBases;
+
+
             }
             catch (Exception ex)
             {
@@ -91,7 +101,32 @@ namespace Teleatel_e
 
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
         {
-            textBox1.Text = Conn;
+            textBox1.Text = textBox1.Text.Replace(@"[SERVER]", comboBox1.SelectedItem.ToString());
+        }
+
+        private String file;
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            string dir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            file = dir + @"\conf.cfg";
+            if (File.Exists(file))
+            {
+                sqlConnectionString = File.ReadAllText(file);
+                this.textBox1.Text = this.sqlConnectionString;
+            }
+            else {
+                this.textBox1.Text = this.sqlConnectionStringTmpl;
+            }
+        }
+
+        private void comboBox2_SelectedValueChanged(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text.Replace(@"master", comboBox2.SelectedItem.ToString());
+        }
+
+        private void saveSqlStrBtn_Click(object sender, EventArgs e)
+        {
+            File.WriteAllText(file, textBox1.Text);
         }
     }
 

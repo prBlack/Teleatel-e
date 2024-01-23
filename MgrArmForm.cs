@@ -28,6 +28,8 @@ namespace Teleatel_e
 
         public String authCode = "11111";
 
+        public String sqlConnectionString = "";
+
         private SqlConnection sqlConnection = null;
 
         private SqlCommandBuilder sqlBuilder = null;
@@ -231,7 +233,7 @@ namespace Teleatel_e
                 this.PerentForm.Enabled = true;
                 this.Close();
             }
-            sqlConnection = new SqlConnection(@"Data Source=FUJI\SQLSERVER;Initial Catalog=Teleatel_e;Persist Security Info=True;User ID=sa;Password=1234");
+            sqlConnection = new SqlConnection(this.sqlConnectionString);
             sqlConnection.Open();
             LoadMastersData();
             LoadMastersChart();
@@ -292,7 +294,17 @@ namespace Teleatel_e
                     }
                     else if (task == "Update")
                     {
+                        int r = e.RowIndex;
 
+                        dataSet.Tables["Masters"].Rows[r]["MasterFio"] = dataGridView2.Rows[r].Cells["MasterFio"].Value;
+                        dataSet.Tables["Masters"].Rows[r]["Experience"] = dataGridView2.Rows[r].Cells["Experience"].Value;
+                        dataSet.Tables["Masters"].Rows[r]["Defect"] = dataGridView2.Rows[r].Cells["Defect"].Value;
+                        dataSet.Tables["Masters"].Rows[r]["RepairAll"] = dataGridView2.Rows[r].Cells["RepairAll"].Value;
+                        dataSet.Tables["Masters"].Rows[r]["Quited"] = dataGridView2.Rows[r].Cells["Quited"].Value;
+
+                        sqlDataAdapter.Update(dataSet, "Customers");
+
+                        dataGridView2.Rows[e.RowIndex].Cells[11].Value = "Delete";
                     }
                     ReloadMastersData();
                     ReloadMastersChart();
@@ -318,6 +330,8 @@ namespace Teleatel_e
 
                     DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
 
+                    dataGridView2[6, lastRow] = linkCell;
+
                     row.Cells["Delete"].Value = "Insert";
 
                 }
@@ -332,6 +346,29 @@ namespace Teleatel_e
         {
             String TotalCostByCustomers = "SELECT * FROM TotalCostByCustomersView";
             LoadToGrid(TotalCostByCustomers, sqlConnection, TotalCostByCustomerGridView);
+        }
+
+        private void dataGridView2_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (newRowAdding == false)
+                {
+                    int rowIndex = dataGridView2.SelectedCells[0].RowIndex;
+
+                    DataGridViewRow editingRow = dataGridView2.Rows[rowIndex];
+
+                    DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
+
+                    dataGridView2[6, rowIndex] = linkCell;
+
+                    editingRow.Cells["Delete"].Value = "Update";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

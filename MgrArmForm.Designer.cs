@@ -50,9 +50,9 @@ namespace Teleatel_e
             this.label1 = new System.Windows.Forms.Label();
             this.orderComplateGridView = new System.Windows.Forms.DataGridView();
             this.tabPageCustomers = new System.Windows.Forms.TabPage();
-            this.TotalCostByCustomerGridView = new System.Windows.Forms.DataGridView();
-            this.label4 = new System.Windows.Forms.Label();
             this.CustomerUpdateBtn = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.TotalCostByCustomerGridView = new System.Windows.Forms.DataGridView();
             this.flowLayoutPanel1.SuspendLayout();
             this.mgrTabControl.SuspendLayout();
             this.tabPageMaster.SuspendLayout();
@@ -138,6 +138,7 @@ namespace Teleatel_e
             this.dataGridView2.Size = new System.Drawing.Size(1042, 259);
             this.dataGridView2.TabIndex = 4;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            this.dataGridView2.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellValueChanged);
             this.dataGridView2.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridView2_UserAddedRow);
             // 
             // ReloadDataBtn
@@ -266,6 +267,26 @@ namespace Teleatel_e
             this.tabPageCustomers.Text = "Заказчики";
             this.tabPageCustomers.UseVisualStyleBackColor = true;
             // 
+            // CustomerUpdateBtn
+            // 
+            this.CustomerUpdateBtn.Location = new System.Drawing.Point(370, 7);
+            this.CustomerUpdateBtn.Name = "CustomerUpdateBtn";
+            this.CustomerUpdateBtn.Size = new System.Drawing.Size(185, 34);
+            this.CustomerUpdateBtn.TabIndex = 2;
+            this.CustomerUpdateBtn.Text = "Обновить информацию";
+            this.CustomerUpdateBtn.UseVisualStyleBackColor = true;
+            this.CustomerUpdateBtn.Click += new System.EventHandler(this.CustomerUpdateBtn_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(7, 21);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(343, 20);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Распределение выручки по заказчикам";
+            // 
             // TotalCostByCustomerGridView
             // 
             this.TotalCostByCustomerGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -284,26 +305,6 @@ namespace Teleatel_e
             this.TotalCostByCustomerGridView.RowTemplate.Height = 24;
             this.TotalCostByCustomerGridView.Size = new System.Drawing.Size(1041, 638);
             this.TotalCostByCustomerGridView.TabIndex = 0;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(7, 21);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(343, 20);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Распределение выручки по заказчикам";
-            // 
-            // CustomerUpdateBtn
-            // 
-            this.CustomerUpdateBtn.Location = new System.Drawing.Point(370, 7);
-            this.CustomerUpdateBtn.Name = "CustomerUpdateBtn";
-            this.CustomerUpdateBtn.Size = new System.Drawing.Size(185, 34);
-            this.CustomerUpdateBtn.TabIndex = 2;
-            this.CustomerUpdateBtn.Text = "Обновить информацию";
-            this.CustomerUpdateBtn.UseVisualStyleBackColor = true;
-            this.CustomerUpdateBtn.Click += new System.EventHandler(this.CustomerUpdateBtn_Click);
             // 
             // MgrArmForm
             // 
