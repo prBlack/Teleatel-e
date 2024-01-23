@@ -136,6 +136,7 @@ namespace Teleatel_e
             sqlConnection = new SqlConnection(this.sqlConnectionString);
             sqlConnection.Open();
             LoadData();
+            LoadCumDate();
         }
 
         private void CustomersGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -267,6 +268,42 @@ namespace Teleatel_e
             }
         }
 
+        private String cumTotalCostString = @"
+SELECT O.*,
+       coalesce(sum(O.Summa) over (order by O.DateStop 
+                rows between unbounded preceding and current row), 
+                0) AS total
+FROM (SELECT
+	C.CustomerFio,
+	T.CustomerID,
+	T.DateStop,
+	T.Summa
+FROM Orders AS T 
+	LEFT JOIN Customers AS C
+		ON T.CustomerID = C.CustomerID
+		WHERE T.DateStop IS NOT NULL) AS O
+ORDER BY O.DateStop";
+
+        private void LoadCumDate()
+        {
+            try
+            {
+                sqlDataAdapter = new SqlDataAdapter(cumTotalCostString, sqlConnection);
+
+                sqlBuilder = new SqlCommandBuilder(sqlDataAdapter);
+
+                dataSet = new DataSet();
+
+                sqlDataAdapter.Fill(dataSet, "Orders");
+
+                CumTotalCostGridView.DataSource = dataSet.Tables[0];
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             ReloadData();

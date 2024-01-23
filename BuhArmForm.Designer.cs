@@ -32,14 +32,17 @@ namespace Teleatel_e
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.buhMainTab = new System.Windows.Forms.TabPage();
-            this.buhSecTab = new System.Windows.Forms.TabPage();
-            this.CustomersGridView = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.CustomersGridView = new System.Windows.Forms.DataGridView();
+            this.buhSecTab = new System.Windows.Forms.TabPage();
+            this.CumTotalCostGridView = new System.Windows.Forms.DataGridView();
             this.flowLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.buhMainTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CustomersGridView)).BeginInit();
+            this.buhSecTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CumTotalCostGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -77,15 +80,24 @@ namespace Teleatel_e
             this.buhMainTab.Text = "Основное";
             this.buhMainTab.UseVisualStyleBackColor = true;
             // 
-            // buhSecTab
+            // button1
             // 
-            this.buhSecTab.Location = new System.Drawing.Point(4, 29);
-            this.buhSecTab.Name = "buhSecTab";
-            this.buhSecTab.Padding = new System.Windows.Forms.Padding(3);
-            this.buhSecTab.Size = new System.Drawing.Size(1314, 637);
-            this.buhSecTab.TabIndex = 1;
-            this.buhSecTab.Text = "Дополнительно";
-            this.buhSecTab.UseVisualStyleBackColor = true;
+            this.button1.Location = new System.Drawing.Point(146, 5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(119, 40);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Обновить";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 20);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Заказчики";
             // 
             // CustomersGridView
             // 
@@ -101,24 +113,27 @@ namespace Teleatel_e
             this.CustomersGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.CustomersGridView_CellValueChanged);
             this.CustomersGridView.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.CustomersGridView_UserAddedRow);
             // 
-            // label1
+            // buhSecTab
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Заказчики";
+            this.buhSecTab.Controls.Add(this.CumTotalCostGridView);
+            this.buhSecTab.Location = new System.Drawing.Point(4, 29);
+            this.buhSecTab.Name = "buhSecTab";
+            this.buhSecTab.Padding = new System.Windows.Forms.Padding(3);
+            this.buhSecTab.Size = new System.Drawing.Size(1506, 570);
+            this.buhSecTab.TabIndex = 1;
+            this.buhSecTab.Text = "Дополнительно";
+            this.buhSecTab.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // CumTotalCostGridView
             // 
-            this.button1.Location = new System.Drawing.Point(146, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(119, 40);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Обновить";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.CumTotalCostGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CumTotalCostGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CumTotalCostGridView.Location = new System.Drawing.Point(3, 3);
+            this.CumTotalCostGridView.Name = "CumTotalCostGridView";
+            this.CumTotalCostGridView.RowHeadersWidth = 51;
+            this.CumTotalCostGridView.RowTemplate.Height = 24;
+            this.CumTotalCostGridView.Size = new System.Drawing.Size(1500, 564);
+            this.CumTotalCostGridView.TabIndex = 0;
             // 
             // BuhArmForm
             // 
@@ -136,6 +151,8 @@ namespace Teleatel_e
             this.buhMainTab.ResumeLayout(false);
             this.buhMainTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CustomersGridView)).EndInit();
+            this.buhSecTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.CumTotalCostGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -149,5 +166,6 @@ namespace Teleatel_e
         private System.Windows.Forms.DataGridView CustomersGridView;
         private System.Windows.Forms.TabPage buhSecTab;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView CumTotalCostGridView;
     }
 }

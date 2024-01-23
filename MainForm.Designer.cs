@@ -171,7 +171,7 @@ namespace Teleatel_e
             // 
             // saveSqlStrBtn
             // 
-            this.saveSqlStrBtn.Location = new System.Drawing.Point(627, 103);
+            this.saveSqlStrBtn.Location = new System.Drawing.Point(627, 104);
             this.saveSqlStrBtn.Name = "saveSqlStrBtn";
             this.saveSqlStrBtn.Size = new System.Drawing.Size(128, 30);
             this.saveSqlStrBtn.TabIndex = 12;
