@@ -57,7 +57,6 @@ namespace Teleatel_e
             //Предварительно очищаем все элементы управления
             //в которые будут выводиться данные
             comboBox1.Items.Clear();
-            richTextBox1.Text = string.Empty;
 
             string[] theAvailableSqlServers = SqlLocator.GetServers();
             if (theAvailableSqlServers != null)

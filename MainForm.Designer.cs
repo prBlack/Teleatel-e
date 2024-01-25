@@ -34,12 +34,10 @@ namespace Teleatel_e
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.ScanSqlBtn = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.button5 = new System.Windows.Forms.Button();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.saveSqlStrBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -103,32 +101,24 @@ namespace Teleatel_e
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(193, 43);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(219, 51);
-            this.richTextBox1.TabIndex = 5;
-            this.richTextBox1.Text = "";
-            // 
             // comboBox1
             // 
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(193, 12);
+            this.comboBox1.Location = new System.Drawing.Point(534, 22);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(219, 28);
+            this.comboBox1.Size = new System.Drawing.Size(221, 28);
             this.comboBox1.TabIndex = 6;
             this.comboBox1.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
             // 
             // ScanSqlBtn
             // 
             this.ScanSqlBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.ScanSqlBtn.Location = new System.Drawing.Point(72, 12);
+            this.ScanSqlBtn.Location = new System.Drawing.Point(298, 22);
             this.ScanSqlBtn.Name = "ScanSqlBtn";
-            this.ScanSqlBtn.Size = new System.Drawing.Size(115, 82);
+            this.ScanSqlBtn.Size = new System.Drawing.Size(230, 28);
             this.ScanSqlBtn.TabIndex = 7;
-            this.ScanSqlBtn.Text = "Выбрать SQL Сервер";
+            this.ScanSqlBtn.Text = "Сканировать SQL Серверы";
             this.ScanSqlBtn.UseVisualStyleBackColor = true;
             this.ScanSqlBtn.Click += new System.EventHandler(this.ScanSqlBtn_Click);
             // 
@@ -136,7 +126,7 @@ namespace Teleatel_e
             // 
             this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(534, 12);
+            this.comboBox2.Location = new System.Drawing.Point(534, 56);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(222, 28);
             this.comboBox2.TabIndex = 8;
@@ -145,21 +135,13 @@ namespace Teleatel_e
             // button5
             // 
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button5.Location = new System.Drawing.Point(425, 12);
+            this.button5.Location = new System.Drawing.Point(298, 56);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(103, 82);
+            this.button5.Size = new System.Drawing.Size(230, 28);
             this.button5.TabIndex = 9;
             this.button5.Text = "выбрать базу данных";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // richTextBox2
-            // 
-            this.richTextBox2.Location = new System.Drawing.Point(534, 43);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(222, 51);
-            this.richTextBox2.TabIndex = 10;
-            this.richTextBox2.Text = "";
             // 
             // textBox1
             // 
@@ -187,12 +169,10 @@ namespace Teleatel_e
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.saveSqlStrBtn);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.ScanSqlBtn);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -219,12 +199,10 @@ namespace Teleatel_e
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button ScanSqlBtn;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button saveSqlStrBtn;
     }

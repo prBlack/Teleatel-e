@@ -101,6 +101,8 @@ namespace Teleatel_e
             {
                 MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+
         }
 
         private void ReloadData()
@@ -137,6 +139,7 @@ namespace Teleatel_e
             sqlConnection.Open();
             LoadData();
             LoadCumDate();
+            LoadCumCostChart();
         }
 
         private void CustomersGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -307,6 +310,39 @@ ORDER BY O.DateStop";
         private void button1_Click(object sender, EventArgs e)
         {
             ReloadData();
+        }
+
+        private void LoadCumCostChart()
+        {
+            try
+            {
+                SqlDataAdapter sqlChartAdapter = new SqlDataAdapter(cumTotalCostString, sqlConnection);
+
+                SqlCommandBuilder sqlChartBuilder = new SqlCommandBuilder(sqlChartAdapter);
+
+                DataSet dsCumCostChart = new DataSet();
+                BindingSource bindingSoure = new BindingSource();
+
+                sqlChartAdapter.Fill(dsCumCostChart);
+
+                cumCostChart.DataSource = dsCumCostChart.Tables[0];
+
+                //bindingSoure.DataMember = "TotalCostByMastersView";
+
+                cumCostChart.Series[0].XValueMember = (dsCumCostChart.Tables[0].Columns[2]).ToString();
+                cumCostChart.Series[0].YValueMembers = (dsCumCostChart.Tables[0].Columns[4]).ToString();
+                cumCostChart.Series[0]["PieLabelStyle"] = "Disabled";
+                cumCostChart.ChartAreas[0].AxisX.Interval = 1;
+                cumCostChart.ChartAreas[0].AxisX.LabelStyle.Angle = -60;
+                cumCostChart.ChartAreas[0].AxisX.IsLabelAutoFit = false;
+                cumCostChart.DataBind();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
