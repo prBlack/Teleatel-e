@@ -28,7 +28,10 @@ namespace Teleatel_e
         public bool IsGranted;
         private void button1_Click(object sender, EventArgs e)
         {
-            ;
+            InOutArmForm InOutArmFrm = new InOutArmForm();
+            InOutArmFrm.PerentForm = this;
+            InOutArmFrm.sqlConnectionString = textBox1.Text;
+            InOutArmFrm.Show();
         }
         private void button2_Click(object sender, EventArgs e)
         {
