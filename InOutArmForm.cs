@@ -271,7 +271,9 @@ WHERE O.TypeID = {0}", takeoutOrderId);
 
         private void btnTakeOut_Click(object sender, EventArgs e)
         {
-            String UpdateString = @"
+            try
+            {
+                String UpdateString = @"
 UPDATE Orders SET
     Summa = @Summa,
     DateStop = @DateStop,
@@ -281,16 +283,20 @@ UPDATE Orders SET
 FROM Orders
 WHERE TypeID = @OrderID";
 
-            SqlCommand sqlCmd = new SqlCommand(UpdateString, sqlConnection);
-            sqlCmd.CommandType = CommandType.Text;
-            sqlCmd.Parameters.AddWithValue("@OrderID", this.takeoutOrderId);
-            sqlCmd.Parameters.AddWithValue("@Summa", this.SummaWithDiscont);
-            sqlCmd.Parameters.AddWithValue("@DateStop", Convert.ToDateTime(this.tbOutDateStop.Text, CultTA));
-            sqlCmd.Parameters.AddWithValue("@Guarantee", Convert.ToInt16(this.tbOutGuarantee.Text));
-            sqlCmd.Parameters.AddWithValue("@Comment", this.rtbOutComment.Text);
-            int i = sqlCmd.ExecuteNonQuery();
+                SqlCommand sqlCmd = new SqlCommand(UpdateString, sqlConnection);
+                sqlCmd.CommandType = CommandType.Text;
+                sqlCmd.Parameters.AddWithValue("@OrderID", this.takeoutOrderId);
+                sqlCmd.Parameters.AddWithValue("@Summa", this.SummaWithDiscont);
+                sqlCmd.Parameters.AddWithValue("@DateStop", Convert.ToDateTime(this.tbOutDateStop.Text, CultTA));
+                sqlCmd.Parameters.AddWithValue("@Guarantee", Convert.ToInt16(this.tbOutGuarantee.Text));
+                sqlCmd.Parameters.AddWithValue("@Comment", this.rtbOutComment.Text);
+                int i = sqlCmd.ExecuteNonQuery();
 
-            MessageBox.Show("Результат", i.ToString(),MessageBoxButtons.OK);
+                MessageBox.Show("Результат", i.ToString(), MessageBoxButtons.OK);
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             ReloadData();
 
