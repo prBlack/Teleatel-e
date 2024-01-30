@@ -135,11 +135,12 @@ namespace Teleatel_e
             CultTA.NumberFormat.CurrencyGroupSeparator = @"";
             CultTA.NumberFormat.NumberDecimalSeparator = @".";
             CultTA.NumberFormat.CurrencyPositivePattern = 0;
-            
 
-                sqlConnection = new SqlConnection(this.sqlConnectionString);
+
+            sqlConnection = new SqlConnection(this.sqlConnectionString);
             sqlConnection.Open();
             LoadData();
+            //LoadDict();
 
 
         }
@@ -150,7 +151,7 @@ namespace Teleatel_e
         private void Recalculate()
         {
             Summa = Decimal.Parse(tbOutSumma.Text, NumberStyles.Currency, CultTA);
-            SummaWithDiscont = ((decimal) Summa * ((decimal)1.00 - (decimal)DiscontPercent / (decimal)100.00));
+            SummaWithDiscont = ((decimal)Summa * ((decimal)1.00 - (decimal)DiscontPercent / (decimal)100.00));
             tbOutSummWithDiscont.Text = SummaWithDiscont.ToString();
             tbOutDateStop.Text = DateTime.Now.ToString("yyyy-MM-dd");
         }
@@ -201,9 +202,9 @@ WHERE O.TypeID = {0}", takeoutOrderId);
                             DataSet ds = new DataSet();
 
                             da.Fill(ds);
-                            tbOutDateStart.Text = ds.Tables[0].Rows[0].Field<DateTime>("DateStart").ToString(CultTA.DateTimeFormat.ShortDatePattern); 
+                            tbOutDateStart.Text = ds.Tables[0].Rows[0].Field<DateTime>("DateStart").ToString(CultTA.DateTimeFormat.ShortDatePattern);
                             Summa = ds.Tables[0].Rows[0].Field<decimal>("Summa");
-                            tbOutSumma.Text = Summa.ToString(CultTA); 
+                            tbOutSumma.Text = Summa.ToString(CultTA);
                             tbOutAge.Text = ds.Tables[0].Rows[0].Field<int>("Age").ToString();
                             tbOutVendor.Text = ds.Tables[0].Rows[0].Field<String>("Vendor");
                             //tbOrderId.Text = ds.ld<String>("OrderID");
@@ -221,7 +222,7 @@ WHERE O.TypeID = {0}", takeoutOrderId);
                             tbOutMasterFio.Text = ds.Tables[0].Rows[0].Field<String>("MasterFio");
 
 
-                            
+
 
                         }
                     }
@@ -238,12 +239,12 @@ WHERE O.TypeID = {0}", takeoutOrderId);
 
         private void InTab_Click(object sender, EventArgs e)
         {
-            ;
+            //LoadDict();
         }
 
         private void tbOutSumma_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == Convert.ToChar(Keys.Return)) { SendKeys.Send("{TAB}"); return; } 
+            if (e.KeyChar == Convert.ToChar(Keys.Return)) { SendKeys.Send("{TAB}"); return; }
             char ch = e.KeyChar;
             char decimalSeparatorChar = Convert.ToChar(CultTA.NumberFormat.CurrencyDecimalSeparator);
             if (ch == decimalSeparatorChar && tbOutSumma.Text.IndexOf(decimalSeparatorChar) != -1)
@@ -256,7 +257,7 @@ WHERE O.TypeID = {0}", takeoutOrderId);
             {
                 e.Handled = true;
             };
-            
+
         }
 
         private void tbOutSumma_Enter(object sender, EventArgs e)
@@ -302,5 +303,180 @@ WHERE TypeID = @OrderID";
 
             InOutTabCtrl.SelectedIndex = 0;
         }
+
+        private void LoadDict()
+        {
+            var dictMasters = new Dictionary<string, string>();
+            String[] dictCustomers;
+            String[] dictEqTypes;
+
+            String sqlStrDictM = @"SELECT S.MasterFio + ' - заказов в работе: ' + CAST(S.InProc AS VARCHAR(10)) AS Description, S.MasterFio AS MasterFio 
+FROM
+(SELECT M.MasterFio, count(O.TypeID) AS 'InProc'
+FROM (SELECT O.TypeID, O.MasterID FROM Orders AS O WHERE O.Repaired = 0) AS O
+RIGHT JOIN Masters AS M ON O.MasterID = M.MasterID
+GROUP BY M.MasterFio) AS S
+ORDER BY InProc";
+            String sqlStrDictC = @"SELECT CustomerFio FROM CUstomers";
+            String sqlStrDictET = @"SELECT EqTypeName FROM EquipmentType";
+
+            DataSet dsMasters = new DataSet();
+            DataSet dsCustomers = new DataSet();
+            DataSet dsEqType = new DataSet();
+
+
+            //SqlDataAdapter daM = new SqlDataAdapter(sqlStrDictM, sqlConnection);
+
+            //SqlCommandBuilder cbM = new SqlCommandBuilder(daM);
+
+            //daM.Fill(dsMasters);
+            FillDs(sqlStrDictM, sqlConnection, dsMasters);
+
+            /*foreach (DataRow row in dsMasters.Tables[0].Rows)
+            {
+                ComboboxItem item = new ComboboxItem();
+                item.Text = row["MasterFio"].ToString() + " - заказов в работе:  " + row["In proc"].ToString();
+                item.Value = row["MasterFio"].ToString();
+                cbInMasterFio.Items.Add(item);
+                //cbInMasterFio.SelectedIndex = -1;
+            }*/
+            try
+            {
+                cbInMasterFio.DataBindings.Add(new Binding("SelectedValue", dsMasters.Tables[0], "MasterFio"));
+                cbInMasterFio.DataSource = dsMasters.Tables[0];
+                cbInMasterFio.DisplayMember = "Description";
+                cbInMasterFio.ValueMember = "MasterFio";
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            FillDs(sqlStrDictC, sqlConnection, dsCustomers);
+
+            /*foreach (DataRow row in dsCustomers.Tables[0].Rows)
+            {
+                cbInCustomerFio.Items.Add(row[0].ToString());
+            }*/
+
+            try
+            {
+                cbInCustomerFio.DataBindings.Add(new Binding("SelectedItem", dsCustomers.Tables[0], "CustomerFio"));
+                cbInCustomerFio.DataSource = dsCustomers.Tables[0];
+                cbInCustomerFio.DisplayMember = "CustomerFio";
+                //cbInCustomerFio.ValueMember = "CustomerFio";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+            FillDs(sqlStrDictET, sqlConnection, dsEqType);
+            /*foreach (DataRow row in dsEqType.Tables[0].Rows)
+            {
+                cbInEqType.Items.Add(row[0].ToString());
+            } */
+
+            try
+            {
+                cbInEqType.DataBindings.Add(new Binding("SelectedItem", dsEqType.Tables[0], "EqTypeName"));
+                cbInEqType.DataSource = dsEqType.Tables[0];
+                cbInEqType.DisplayMember = "EqTypeName";
+                //cbInCustomerFio.ValueMember = "CustomerFio";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void FillDs (String sqlString, SqlConnection sqlConn, DataSet ds)
+        {
+            SqlDataAdapter da = new SqlDataAdapter(sqlString, sqlConn);
+
+            SqlCommandBuilder cb = new SqlCommandBuilder(da);
+
+            da.Fill(ds);
+        }
+        private void InTab_MouseClick(object sender, MouseEventArgs e)
+        {
+            //LoadDict();
+        }
+
+        private void InOutTabCtrl_Selected(object sender, TabControlEventArgs e)
+        {
+            if (InOutTabCtrl.SelectedIndex == 1)
+            {
+                LoadDict();
+                tbInDateStart.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            }
+        }
+
+        private void btnTakeIn_Click(object sender, EventArgs e)
+        {
+            /*
+             *   @EqTypeName VARCHAR(50),
+             *   @MasterFio VARCHAR(50),
+             *   @CustomerFio VARCHAR(50),
+             *   @Country VARCHAR(50),
+             *   @Company VARCHAR(50),
+             *   @Age int,
+             *   @Comment VARCHAR(MAX)
+             */
+
+
+
+            string EqTypeName = cbInEqType.SelectedItem == null ? cbInEqType.Text : cbInEqType.SelectedItem.ToString();
+            //ComboboxItem cbI = cbInMasterFio.SelectedValue;
+            string MasterFio = cbInMasterFio.SelectedValue.ToString();
+            string CustomerFio = cbInCustomerFio.SelectedItem == null ? cbInCustomerFio.Text : cbInCustomerFio.SelectedItem.ToString();
+            string Country = tbInCountry.Text;
+            string Company = tbInVendor.Text;
+            int Age = int.Parse(tbInAge.Text);
+            string Comment = tbInComment.Text;
+
+            SqlCommand sqlCmd = new SqlCommand("UsP_AddNewOrder", sqlConnection);
+            sqlCmd.CommandType = CommandType.StoredProcedure;
+            sqlCmd.Parameters.AddWithValue("@EqTypeName", SqlDbType.VarChar).Value = EqTypeName;
+            sqlCmd.Parameters.AddWithValue("@MasterFio", SqlDbType.VarChar).Value = MasterFio;
+            sqlCmd.Parameters.AddWithValue("@CustomerFio", SqlDbType.VarChar).Value = CustomerFio;
+            sqlCmd.Parameters.AddWithValue("@Country", SqlDbType.VarChar).Value = Country;
+            sqlCmd.Parameters.AddWithValue("@Company", SqlDbType.VarChar).Value = Company;
+            sqlCmd.Parameters.AddWithValue("@Age", SqlDbType.Int).Value = Age;
+            sqlCmd.Parameters.AddWithValue("@Comment", SqlDbType.VarChar).Value = Comment;
+            SqlDataReader sqlDr = sqlCmd.ExecuteReader();
+
+            cbInMasterFio.DataBindings.Clear();
+            cbInCustomerFio.DataBindings.Clear();
+            cbInEqType.DataBindings.Clear();
+
+            LoadData();
+            InOutTabCtrl.SelectedIndex = 0;
+
+        }
+
+        private void InTab_Leave(object sender, EventArgs e)
+        {
+            cbInMasterFio.DataBindings.Clear();
+            cbInCustomerFio.DataBindings.Clear();
+            cbInEqType.DataBindings.Clear();
+        }
     }
+
+    public class ComboboxItem
+    {
+        public string Text { get; set; }
+        public object Value { get; set; }
+        public override string ToString()
+        {
+            return Text;
+        }
+
+        public string GetValue()
+        {
+            return Value.ToString();
+        }
+    }
+
 }

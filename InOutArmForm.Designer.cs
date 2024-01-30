@@ -36,7 +36,7 @@ namespace Teleatel_e
             this.InTab = new System.Windows.Forms.TabPage();
             this.btnTakeIn = new System.Windows.Forms.Button();
             this.cbInEqType = new System.Windows.Forms.ComboBox();
-            this.cnInCustomerFio = new System.Windows.Forms.ComboBox();
+            this.cbInCustomerFio = new System.Windows.Forms.ComboBox();
             this.cbInMasterFio = new System.Windows.Forms.ComboBox();
             this.tbInComment = new System.Windows.Forms.TextBox();
             this.tbInDateStart = new System.Windows.Forms.TextBox();
@@ -117,6 +117,7 @@ namespace Teleatel_e
             this.InOutTabCtrl.SelectedIndex = 0;
             this.InOutTabCtrl.Size = new System.Drawing.Size(1247, 591);
             this.InOutTabCtrl.TabIndex = 0;
+            this.InOutTabCtrl.Selected += new System.Windows.Forms.TabControlEventHandler(this.InOutTabCtrl_Selected);
             // 
             // ListTab
             // 
@@ -146,7 +147,7 @@ namespace Teleatel_e
             // 
             this.InTab.Controls.Add(this.btnTakeIn);
             this.InTab.Controls.Add(this.cbInEqType);
-            this.InTab.Controls.Add(this.cnInCustomerFio);
+            this.InTab.Controls.Add(this.cbInCustomerFio);
             this.InTab.Controls.Add(this.cbInMasterFio);
             this.InTab.Controls.Add(this.tbInComment);
             this.InTab.Controls.Add(this.tbInDateStart);
@@ -174,6 +175,8 @@ namespace Teleatel_e
             this.InTab.Text = "Принять в ремонт";
             this.InTab.UseVisualStyleBackColor = true;
             this.InTab.Click += new System.EventHandler(this.InTab_Click);
+            this.InTab.Leave += new System.EventHandler(this.InTab_Leave);
+            this.InTab.MouseClick += new System.Windows.Forms.MouseEventHandler(this.InTab_MouseClick);
             // 
             // btnTakeIn
             // 
@@ -184,6 +187,7 @@ namespace Teleatel_e
             this.btnTakeIn.TabIndex = 4;
             this.btnTakeIn.Text = "Принять";
             this.btnTakeIn.UseVisualStyleBackColor = true;
+            this.btnTakeIn.Click += new System.EventHandler(this.btnTakeIn_Click);
             // 
             // cbInEqType
             // 
@@ -194,14 +198,14 @@ namespace Teleatel_e
             this.cbInEqType.Size = new System.Drawing.Size(188, 30);
             this.cbInEqType.TabIndex = 2;
             // 
-            // cnInCustomerFio
+            // cbInCustomerFio
             // 
-            this.cnInCustomerFio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cnInCustomerFio.FormattingEnabled = true;
-            this.cnInCustomerFio.Location = new System.Drawing.Point(830, 77);
-            this.cnInCustomerFio.Name = "cnInCustomerFio";
-            this.cnInCustomerFio.Size = new System.Drawing.Size(368, 30);
-            this.cnInCustomerFio.TabIndex = 2;
+            this.cbInCustomerFio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbInCustomerFio.FormattingEnabled = true;
+            this.cbInCustomerFio.Location = new System.Drawing.Point(830, 77);
+            this.cbInCustomerFio.Name = "cbInCustomerFio";
+            this.cbInCustomerFio.Size = new System.Drawing.Size(368, 30);
+            this.cbInCustomerFio.TabIndex = 2;
             // 
             // cbInMasterFio
             // 
@@ -262,6 +266,7 @@ namespace Teleatel_e
             // 
             // tbInId
             // 
+            this.tbInId.Enabled = false;
             this.tbInId.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbInId.Location = new System.Drawing.Point(295, 19);
             this.tbInId.Name = "tbInId";
@@ -370,6 +375,8 @@ namespace Teleatel_e
             // 
             // pbInPicture
             // 
+            this.pbInPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbInPicture.Image = global::Teleatel_e.Properties.Resources.no_image1;
             this.pbInPicture.Location = new System.Drawing.Point(562, 141);
             this.pbInPicture.Name = "pbInPicture";
             this.pbInPicture.Size = new System.Drawing.Size(636, 373);
@@ -739,7 +746,7 @@ namespace Teleatel_e
         private System.Windows.Forms.Button btnTakeIn;
         private System.Windows.Forms.PictureBox pbInPicture;
         private System.Windows.Forms.ComboBox cbInEqType;
-        private System.Windows.Forms.ComboBox cnInCustomerFio;
+        private System.Windows.Forms.ComboBox cbInCustomerFio;
         private System.Windows.Forms.ComboBox cbInMasterFio;
         private System.Windows.Forms.TextBox tbInComment;
         private System.Windows.Forms.TextBox tbInDateStart;
