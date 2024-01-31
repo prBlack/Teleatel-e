@@ -33,9 +33,13 @@ namespace Teleatel_e
 
         private new SqlConnection sqlConnection = null;
 
-        private new SqlCommandBuilder sqlBuilder = null;
+        private new SqlCommandBuilder sb = null;
 
-        private new SqlDataAdapter sqlDataAdapter = null;
+        private SqlCommand sqlCmd;
+
+        private new SqlDataAdapter da;
+
+        private new DataSet ds;
         private new void ShowLogin()
         {
             MgrLoginForm MgrLoginFrm = new MgrLoginForm();
@@ -93,14 +97,99 @@ namespace Teleatel_e
 
         private void LoadData()
         {
-            DataSet ds = new DataSet();
-            SqlCommand sqlCmd = new SqlCommand("GetIncompleteOrders", sqlConnection);
+            ds = new DataSet();
+            sqlCmd = new SqlCommand("GetIncompleteOrders", sqlConnection);
             sqlCmd.CommandType = CommandType.StoredProcedure;
             sqlCmd.Parameters.AddWithValue("@MasterFio", SqlDbType.VarChar).Value = this.userRole;
-            SqlDataAdapter da = new SqlDataAdapter();
+            da = new SqlDataAdapter();
             da.SelectCommand = sqlCmd;
             da.Fill(ds);
             dgvOrders.DataSource = ds.Tables[0];
+            dgvOrders.Columns[0].Width = 20;
+            //DataGridViewRow dgvRow = new DataGridViewRow();
+            /*for (int i = 0; i < dgvOrders.Rows.Count; i++)
+            {
+                DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
+
+                dgvOrders[6, i] = linkCell;
+            }*/
+            foreach (int i in new List<int>() { 0, 1, 2, 3 })
+            {
+                dgvOrders.Columns[i].ReadOnly = true;
+                dgvOrders.Columns[i].DefaultCellStyle.BackColor = Color.LightGray;
+            }
+        }
+
+        private void ReloadData()
+        {
+            ds.Tables[0].Clear();
+            da.SelectCommand = sqlCmd;
+            da.Fill(ds);
+            dgvOrders.DataSource = ds.Tables[0];
+            dgvOrders.Columns[0].Width = 20;
+
+            foreach (int i in new List<int>() { 0, 1, 2, 3 })
+            {
+                dgvOrders.Columns[i].ReadOnly = true;
+                dgvOrders.Columns[i].DefaultCellStyle.BackColor = Color.LightGray;
+            }
+
+        }
+
+        private void dgvOrders_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                int r = e.RowIndex;
+                //DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
+                //dgvOrders[6, r] = linkCell;
+                if (e.ColumnIndex == 6)
+                {
+                    string task = dgvOrders.Rows[e.RowIndex].Cells[6].Value.ToString();
+
+                    if (task == "Обновить")
+                    {
+                        
+                        //int OrderID = int.Parse(dgvOrders.Rows[r].Cells[0].Value.ToString());
+                        //String Comment = dgvOrders.Rows[r].Cells[4].Value.ToString();
+                        //int Repaired = int.Parse(dgvOrders.Rows[r].Cells[5].Value.ToString());
+                        String sqlUpdateStr = @"
+UPDATE Orders
+SET 
+    Comment = @Comment,
+    Repaired = @Repaired
+FROM Orders
+WHERE TypeID = @OrderID";
+
+                        SqlCommand sqlCmd = new SqlCommand(sqlUpdateStr, sqlConnection);
+                        //sqlCmd.Connection.Open();
+                        sqlCmd.Parameters.AddWithValue("@OrderID", dgvOrders.Rows[r].Cells[0].Value);
+                        sqlCmd.Parameters.AddWithValue("@Comment", dgvOrders.Rows[r].Cells[4].Value);
+                        sqlCmd.Parameters.AddWithValue("@Repaired", dgvOrders.Rows[r].Cells[5].Value);
+                        sqlCmd.ExecuteNonQuery();
+                    }
+                    ReloadData();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvOrders_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+
+            int rowIndex = dgvOrders.SelectedCells[0].RowIndex;
+
+            DataGridViewRow editingRow = dgvOrders.Rows[rowIndex];
+
+            DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
+
+            dgvOrders[6, rowIndex] = linkCell;
+            dgvOrders[6, rowIndex].ReadOnly = false;
+
         }
     }
 }
