@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
+using System.Globalization;
 
 
 
@@ -52,7 +53,10 @@ namespace Teleatel_e
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ;
+            MasterArmForm MasterArmFrm = new MasterArmForm();
+            MasterArmFrm.PerentForm = this;
+            MasterArmFrm.sqlConnectionString = textBox1.Text;
+            MasterArmFrm.Show();
         }
 
         private void ScanSqlBtn_Click(object sender, EventArgs e)
@@ -231,5 +235,67 @@ namespace Teleatel_e
             return retval;
         }
 
+    }
+
+    public partial class TAForm : Form
+    {
+        private CultureInfo CultTA;
+
+        public bool IsGranted = false;
+
+        public Form PerentForm;
+
+        public String userRole = "";
+
+        public String authCode = "";
+
+        public String sqlConnectionString = "";
+
+        private SqlConnection sqlConnection = null;
+
+        private SqlCommandBuilder sqlBuilder = null;
+
+        private SqlDataAdapter sqlDataAdapter = null;
+        private void ShowLogin()
+        {
+            MgrLoginForm MgrLoginFrm = new MgrLoginForm();
+            MgrLoginFrm.PerentForm = this;
+            MgrLoginFrm.authCode = this.authCode;
+            if (MgrLoginFrm.ShowDialog(this) == DialogResult.OK)
+            {
+                this.Enabled = true;
+                this.IsGranted = true;
+            }
+            else
+            {
+                this.IsGranted = false;
+            }
+        }
+
+        public virtual void SetUserRole(String ur)
+        {
+            this.userRole = ur;
+        }
+
+        private void LoadToGrid(string sqlString, SqlConnection sqlConn, DataGridView frmDg)
+        {
+            try
+            {
+                SqlDataAdapter da = new SqlDataAdapter(sqlString, sqlConn);
+
+                SqlCommandBuilder cb = new SqlCommandBuilder(da);
+
+                DataSet ds = new DataSet();
+
+                da.Fill(ds);
+
+                frmDg.DataSource = ds.Tables[0];
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

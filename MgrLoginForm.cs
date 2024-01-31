@@ -19,14 +19,15 @@ namespace Teleatel_e
 
         public String authCode = "";
         public bool IsGranted = false;
-
-        public Form PerentForm;
+        public String userRole;
+        public TAForm PerentForm;
         private void MgrLoginBtn_Click(object sender, EventArgs e)
         {
             if (MgrPwdBox.Text == this.authCode)
             {
                 this.PerentForm.Enabled = true;
                 this.IsGranted = true;
+                this.userRole = cbUserRole.Text;
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -37,7 +38,15 @@ namespace Teleatel_e
                 //this.Close();
             }
         }
+         public new void SetUserRole(String UserRole)
+        {
+            this.cbUserRole.SelectedIndex = this.cbUserRole.Items.Add(UserRole);
+        }
 
+        public void AddRole(string UserRole)
+        {
+            this.cbUserRole.SelectedIndex = this.cbUserRole.Items.Add(UserRole);
+        }
         private void MgrLoginForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             ;

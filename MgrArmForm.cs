@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace Teleatel_e
 {
-    public partial class MgrArmForm : Form
+    public partial class MgrArmForm : TAForm
     {
         public MgrArmForm()
         {
@@ -26,6 +26,8 @@ namespace Teleatel_e
             this.PerentForm.Enabled = true;
         }
 
+        public string userRole = "Руководитель";
+        
         public String authCode = "11111";
 
         public String sqlConnectionString = "";
@@ -43,6 +45,7 @@ namespace Teleatel_e
         {
             MgrLoginForm MgrLoginFrm = new MgrLoginForm();
             MgrLoginFrm.PerentForm = this;
+            MgrLoginFrm.SetUserRole(this.userRole);
             MgrLoginFrm.authCode = this.authCode;
             if (MgrLoginFrm.ShowDialog(this) == DialogResult.OK)
             {
@@ -53,6 +56,11 @@ namespace Teleatel_e
             {
                 this.IsGranted = false;
             }
+        }
+
+        public void SetUserRole(String ur)
+        {
+            this.userRole = ur;
         }
 
         private void LoadMastersData()
@@ -228,17 +236,18 @@ namespace Teleatel_e
         private void MgrArmForm_Load(object sender, EventArgs e)
         {
             this.ShowLogin();
-            if (this.IsGranted == false)
+            if (this.IsGranted == true)
             {
+                sqlConnection = new SqlConnection(this.sqlConnectionString);
+                sqlConnection.Open();
+                LoadMastersData();
+                LoadMastersChart();
+                LoadOrdersData();
+                LoadCustomerData();
+            } else {
                 this.PerentForm.Enabled = true;
                 this.Close();
             }
-            sqlConnection = new SqlConnection(this.sqlConnectionString);
-            sqlConnection.Open();
-            LoadMastersData();
-            LoadMastersChart();
-            LoadOrdersData();
-            LoadCustomerData();
         }
 
         private void ReloadDataBtn_Click(object sender, EventArgs e)

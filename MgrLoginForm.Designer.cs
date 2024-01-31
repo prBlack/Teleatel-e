@@ -32,13 +32,14 @@ namespace Teleatel_e
             this.label1 = new System.Windows.Forms.Label();
             this.MgrPwdBox = new System.Windows.Forms.TextBox();
             this.MgrLoginPwd = new System.Windows.Forms.Button();
+            this.cbUserRole = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(19, 17);
+            this.label1.Location = new System.Drawing.Point(19, 61);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(148, 20);
             this.label1.TabIndex = 0;
@@ -46,28 +47,38 @@ namespace Teleatel_e
             // 
             // MgrPwdBox
             // 
-            this.MgrPwdBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.MgrPwdBox.Location = new System.Drawing.Point(22, 61);
+            this.MgrPwdBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MgrPwdBox.Location = new System.Drawing.Point(22, 84);
             this.MgrPwdBox.Name = "MgrPwdBox";
-            this.MgrPwdBox.Size = new System.Drawing.Size(214, 27);
+            this.MgrPwdBox.Size = new System.Drawing.Size(214, 28);
             this.MgrPwdBox.TabIndex = 1;
             // 
             // MgrLoginPwd
             // 
             this.MgrLoginPwd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.MgrLoginPwd.Location = new System.Drawing.Point(242, 61);
+            this.MgrLoginPwd.Location = new System.Drawing.Point(242, 84);
             this.MgrLoginPwd.Name = "MgrLoginPwd";
-            this.MgrLoginPwd.Size = new System.Drawing.Size(118, 27);
+            this.MgrLoginPwd.Size = new System.Drawing.Size(118, 32);
             this.MgrLoginPwd.TabIndex = 2;
             this.MgrLoginPwd.Text = "Вход";
             this.MgrLoginPwd.UseVisualStyleBackColor = true;
             this.MgrLoginPwd.Click += new System.EventHandler(this.MgrLoginBtn_Click);
+            // 
+            // cbUserRole
+            // 
+            this.cbUserRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbUserRole.FormattingEnabled = true;
+            this.cbUserRole.Location = new System.Drawing.Point(23, 24);
+            this.cbUserRole.Name = "cbUserRole";
+            this.cbUserRole.Size = new System.Drawing.Size(213, 30);
+            this.cbUserRole.TabIndex = 3;
             // 
             // MgrLoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(372, 128);
+            this.Controls.Add(this.cbUserRole);
             this.Controls.Add(this.MgrLoginPwd);
             this.Controls.Add(this.MgrPwdBox);
             this.Controls.Add(this.label1);
@@ -85,5 +96,6 @@ namespace Teleatel_e
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox MgrPwdBox;
         private System.Windows.Forms.Button MgrLoginPwd;
+        private System.Windows.Forms.ComboBox cbUserRole;
     }
 }

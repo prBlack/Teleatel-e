@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace Teleatel_e
 {
-    public partial class BuhArmForm : Form
+    public partial class BuhArmForm : TAForm
     {
         public BuhArmForm()
         {
@@ -22,6 +22,8 @@ namespace Teleatel_e
 
         public Form PerentForm;
 
+        public string userRole = "Бухгалтер";
+        
         public String authCode = "22222";
 
         public String sqlConnectionString = "";
@@ -39,6 +41,7 @@ namespace Teleatel_e
         {
             MgrLoginForm MgrLoginFrm = new MgrLoginForm();
             MgrLoginFrm.PerentForm = this;
+            MgrLoginFrm.SetUserRole(this.userRole);
             MgrLoginFrm.authCode = this.authCode;
             if (MgrLoginFrm.ShowDialog(this) == DialogResult.OK)
             {
@@ -49,6 +52,11 @@ namespace Teleatel_e
             {
                 this.IsGranted = false;
             }
+        }
+
+        public void SetUserRole(String ur)
+        {
+            this.userRole = ur;
         }
 
         private void LoadToGrid(string sqlString, SqlConnection sqlConn, DataGridView frmDg)
@@ -94,7 +102,7 @@ namespace Teleatel_e
                 {
                     DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
 
-                    CustomersGridView[11, i] = linkCell;
+                    CustomersGridView[12, i] = linkCell;
                 }
             }
             catch (Exception ex)
@@ -119,7 +127,7 @@ namespace Teleatel_e
                 {
                     DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
 
-                    CustomersGridView[11, i] = linkCell;
+                    CustomersGridView[12, i] = linkCell;
                 }
             }
             catch (Exception ex)
@@ -130,23 +138,26 @@ namespace Teleatel_e
         private void BuhArmForm_Load(object sender, EventArgs e)
         {
             this.ShowLogin();
-            if (this.IsGranted == false)
+            if (this.IsGranted == true)
+            {
+                sqlConnection = new SqlConnection(this.sqlConnectionString);
+                sqlConnection.Open();
+                LoadData();
+                LoadCumDate();
+                LoadCumCostChart();
+            }
+            else
             {
                 this.PerentForm.Enabled = true;
                 this.Close();
             }
-            sqlConnection = new SqlConnection(this.sqlConnectionString);
-            sqlConnection.Open();
-            LoadData();
-            LoadCumDate();
-            LoadCumCostChart();
         }
 
         private void CustomersGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                if (e.ColumnIndex == 11)
+                if (e.ColumnIndex == 12)
                 {
                     string task = CustomersGridView.Rows[e.RowIndex].Cells[11].Value.ToString();
 
@@ -210,7 +221,7 @@ namespace Teleatel_e
 
                         sqlDataAdapter.Update(dataSet, "Customers");
 
-                        CustomersGridView.Rows[e.RowIndex].Cells[11].Value = "Delete";
+                        CustomersGridView.Rows[e.RowIndex].Cells[12].Value = "Delete";
 
                     }
                     ReloadData();
@@ -236,7 +247,7 @@ namespace Teleatel_e
 
                     DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
 
-                    CustomersGridView[11, lastRow] = linkCell;
+                    CustomersGridView[12, lastRow] = linkCell;
 
                     row.Cells["Delete"].Value = "Insert";
 
@@ -260,7 +271,7 @@ namespace Teleatel_e
 
                     DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
 
-                    CustomersGridView[11, rowIndex] = linkCell;
+                    CustomersGridView[12, rowIndex] = linkCell;
 
                     editingRow.Cells["Delete"].Value = "Update";
                 }
@@ -325,17 +336,20 @@ ORDER BY O.DateStop";
 
                 sqlChartAdapter.Fill(dsCumCostChart);
 
-                cumCostChart.DataSource = dsCumCostChart.Tables[0];
+                if (dsCumCostChart != null)
+                {
+                    cumCostChart.DataSource = dsCumCostChart.Tables[0];
 
-                //bindingSoure.DataMember = "TotalCostByMastersView";
+                    //bindingSoure.DataMember = "TotalCostByMastersView";
 
-                cumCostChart.Series[0].XValueMember = (dsCumCostChart.Tables[0].Columns[2]).ToString();
-                cumCostChart.Series[0].YValueMembers = (dsCumCostChart.Tables[0].Columns[4]).ToString();
-                cumCostChart.Series[0]["PieLabelStyle"] = "Disabled";
-                cumCostChart.ChartAreas[0].AxisX.Interval = 1;
-                cumCostChart.ChartAreas[0].AxisX.LabelStyle.Angle = -60;
-                cumCostChart.ChartAreas[0].AxisX.IsLabelAutoFit = false;
-                cumCostChart.DataBind();
+                    cumCostChart.Series[0].XValueMember = (dsCumCostChart.Tables[0].Columns[2]).ToString();
+                    cumCostChart.Series[0].YValueMembers = (dsCumCostChart.Tables[0].Columns[4]).ToString();
+                    cumCostChart.Series[0]["PieLabelStyle"] = "Disabled";
+                    cumCostChart.ChartAreas[0].AxisX.Interval = 1;
+                    cumCostChart.ChartAreas[0].AxisX.LabelStyle.Angle = -60;
+                    cumCostChart.ChartAreas[0].AxisX.IsLabelAutoFit = false;
+                    cumCostChart.DataBind();
+                }
 
 
             }

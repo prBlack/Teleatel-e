@@ -13,7 +13,7 @@ using System.Threading;
 
 namespace Teleatel_e
 {
-    public partial class InOutArmForm : Form
+    public partial class InOutArmForm : TAForm
     {
         public InOutArmForm()
         {
@@ -26,6 +26,8 @@ namespace Teleatel_e
 
         public Form PerentForm;
 
+        public string userRole = "Диспетчер";
+        
         public String authCode = "33333";
 
         public String sqlConnectionString = "";
@@ -44,6 +46,7 @@ namespace Teleatel_e
             MgrLoginForm MgrLoginFrm = new MgrLoginForm();
             MgrLoginFrm.PerentForm = this;
             MgrLoginFrm.authCode = this.authCode;
+            MgrLoginFrm.SetUserRole(this.userRole);
             if (MgrLoginFrm.ShowDialog(this) == DialogResult.OK)
             {
                 this.Enabled = true;
@@ -53,6 +56,11 @@ namespace Teleatel_e
             {
                 this.IsGranted = false;
             }
+        }
+
+        public void SetUserRole(String ur)
+        {
+            this.userRole = ur;
         }
 
         private void LoadToGrid(string sqlString, SqlConnection sqlConn, DataGridView frmDg)
@@ -122,26 +130,28 @@ namespace Teleatel_e
         private void InOutArmForm_Load(object sender, EventArgs e)
         {
             this.ShowLogin();
-            if (this.IsGranted == false)
+            if (this.IsGranted == true)
+            {
+
+                CultTA = (CultureInfo)CultureInfo.InvariantCulture.Clone();
+
+                CultTA.DateTimeFormat.ShortDatePattern = @"yyyy-MM-dd";
+                CultTA.NumberFormat.CurrencyDecimalSeparator = @".";
+                CultTA.NumberFormat.CurrencyGroupSeparator = @"";
+                CultTA.NumberFormat.NumberDecimalSeparator = @".";
+                CultTA.NumberFormat.CurrencyPositivePattern = 0;
+
+
+                sqlConnection = new SqlConnection(this.sqlConnectionString);
+                sqlConnection.Open();
+                LoadData();
+                //LoadDict();
+            }
+            else
             {
                 this.PerentForm.Enabled = true;
                 this.Close();
             }
-
-            CultTA = (CultureInfo)CultureInfo.InvariantCulture.Clone();
-
-            CultTA.DateTimeFormat.ShortDatePattern = @"yyyy-MM-dd";
-            CultTA.NumberFormat.CurrencyDecimalSeparator = @".";
-            CultTA.NumberFormat.CurrencyGroupSeparator = @"";
-            CultTA.NumberFormat.NumberDecimalSeparator = @".";
-            CultTA.NumberFormat.CurrencyPositivePattern = 0;
-
-
-            sqlConnection = new SqlConnection(this.sqlConnectionString);
-            sqlConnection.Open();
-            LoadData();
-            //LoadDict();
-
 
         }
 
@@ -307,8 +317,7 @@ WHERE TypeID = @OrderID";
         private void LoadDict()
         {
             var dictMasters = new Dictionary<string, string>();
-            String[] dictCustomers;
-            String[] dictEqTypes;
+
 
             String sqlStrDictM = @"SELECT S.MasterFio + ' - заказов в работе: ' + CAST(S.InProc AS VARCHAR(10)) AS Description, S.MasterFio AS MasterFio 
 FROM

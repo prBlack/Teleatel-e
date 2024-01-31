@@ -53,6 +53,12 @@
     <Compile Include="BuhArmForm.Designer.cs">
       <DependentUpon>BuhArmForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MasterArmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MasterArmForm.Designer.cs">
+      <DependentUpon>MasterArmForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="InOutArmForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,9 @@
     </Compile>
     <EmbeddedResource Include="BuhArmForm.resx">
       <DependentUpon>BuhArmForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MasterArmForm.resx">
+      <DependentUpon>MasterArmForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InOutArmForm.resx">
       <DependentUpon>InOutArmForm.cs</DependentUpon>
