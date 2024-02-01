@@ -34,6 +34,7 @@ namespace Teleatel_e
             this.ListTab = new System.Windows.Forms.TabPage();
             this.gvIncompOrder = new System.Windows.Forms.DataGridView();
             this.InTab = new System.Windows.Forms.TabPage();
+            this.btnAddPicture = new System.Windows.Forms.Button();
             this.btnTakeIn = new System.Windows.Forms.Button();
             this.cbInEqType = new System.Windows.Forms.ComboBox();
             this.cbInCustomerFio = new System.Windows.Forms.ComboBox();
@@ -145,6 +146,7 @@ namespace Teleatel_e
             // 
             // InTab
             // 
+            this.InTab.Controls.Add(this.btnAddPicture);
             this.InTab.Controls.Add(this.btnTakeIn);
             this.InTab.Controls.Add(this.cbInEqType);
             this.InTab.Controls.Add(this.cbInCustomerFio);
@@ -177,6 +179,16 @@ namespace Teleatel_e
             this.InTab.Click += new System.EventHandler(this.InTab_Click);
             this.InTab.Leave += new System.EventHandler(this.InTab_Leave);
             this.InTab.MouseClick += new System.Windows.Forms.MouseEventHandler(this.InTab_MouseClick);
+            // 
+            // btnAddPicture
+            // 
+            this.btnAddPicture.Location = new System.Drawing.Point(562, 469);
+            this.btnAddPicture.Name = "btnAddPicture";
+            this.btnAddPicture.Size = new System.Drawing.Size(315, 44);
+            this.btnAddPicture.TabIndex = 5;
+            this.btnAddPicture.Text = "Добавить изображение";
+            this.btnAddPicture.UseVisualStyleBackColor = true;
+            this.btnAddPicture.Click += new System.EventHandler(this.btnAddPicture_Click);
             // 
             // btnTakeIn
             // 
@@ -379,7 +391,8 @@ namespace Teleatel_e
             this.pbInPicture.Image = global::Teleatel_e.Properties.Resources.no_image1;
             this.pbInPicture.Location = new System.Drawing.Point(562, 141);
             this.pbInPicture.Name = "pbInPicture";
-            this.pbInPicture.Size = new System.Drawing.Size(636, 373);
+            this.pbInPicture.Size = new System.Drawing.Size(636, 337);
+            this.pbInPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbInPicture.TabIndex = 3;
             this.pbInPicture.TabStop = false;
             // 
@@ -795,5 +808,6 @@ namespace Teleatel_e
         private System.Windows.Forms.TextBox tbOutDiscontPercent;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Button btnAddPicture;
     }
 }

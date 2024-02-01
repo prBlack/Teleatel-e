@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Threading;
+using System.Windows;
+using System.IO;
 
 namespace Teleatel_e
 {
@@ -20,7 +22,13 @@ namespace Teleatel_e
             InitializeComponent();
         }
 
-        CultureInfo CultTA;
+        private CultureInfo CultTA;
+
+        public byte[] CurPicture;
+
+        public int LastOrder;
+
+        public int LastEquipment;
 
         public bool IsGranted = false;
 
@@ -436,10 +444,10 @@ ORDER BY InProc";
 
 
 
-            string EqTypeName = cbInEqType.SelectedItem == null ? cbInEqType.Text : cbInEqType.SelectedItem.ToString();
+            string EqTypeName = cbInEqType.Text;
             //ComboboxItem cbI = cbInMasterFio.SelectedValue;
             string MasterFio = cbInMasterFio.SelectedValue.ToString();
-            string CustomerFio = cbInCustomerFio.SelectedItem == null ? cbInCustomerFio.Text : cbInCustomerFio.SelectedItem.ToString();
+            string CustomerFio = cbInCustomerFio.Text;
             string Country = tbInCountry.Text;
             string Company = tbInVendor.Text;
             int Age = int.Parse(tbInAge.Text);
@@ -454,12 +462,24 @@ ORDER BY InProc";
             sqlCmd.Parameters.AddWithValue("@Company", SqlDbType.VarChar).Value = Company;
             sqlCmd.Parameters.AddWithValue("@Age", SqlDbType.Int).Value = Age;
             sqlCmd.Parameters.AddWithValue("@Comment", SqlDbType.VarChar).Value = Comment;
-            SqlDataReader sqlDr = sqlCmd.ExecuteReader();
+            //sqlCmd.Parameters.Add("@OrderID", SqlDbType.Int);
+            //sqlCmd.Parameters.Add("@IzdelieID", SqlDbType.Int);
+            SqlDataReader reader = sqlCmd.ExecuteReader();
+            if (reader.Read() && CurPicture != null)
+            {
+                LastOrder = reader.GetInt32(0); // ["OrderID"];
+                tbInId.Text = LastOrder.ToString();
+                LastEquipment = reader.GetInt32(1); //["IzdelieID"];
+                PicToDb(LastEquipment, CurPicture);
+            }
 
             cbInMasterFio.DataBindings.Clear();
             cbInCustomerFio.DataBindings.Clear();
             cbInEqType.DataBindings.Clear();
-
+            reader.Close();
+            LastEquipment = -1;
+            CurPicture = null;
+            LastOrder = -1;
             LoadData();
             InOutTabCtrl.SelectedIndex = 0;
 
@@ -471,9 +491,35 @@ ORDER BY InProc";
             cbInCustomerFio.DataBindings.Clear();
             cbInEqType.DataBindings.Clear();
         }
+
+        private void btnAddPicture_Click(object sender, EventArgs e)
+        {
+                OpenFileDialog openFileDialog = new OpenFileDialog(); // создаем диалоговое окно
+                openFileDialog.ShowDialog(); // показываем
+                this.CurPicture = File.ReadAllBytes(openFileDialog.FileName); // получаем байты выбранного файла
+
+                this.pbInPicture.Load(openFileDialog.FileName) ;
+
+                /*if (this.tbInId.Text != null)
+                {
+                    PicToDb(int.Parse(this.tbInId.Text), CurPicture);
+                }*/
+
+        }
+
+        private void PicToDb(int IzdelieID, byte[] Picture)
+        {
+            SqlCommand sqlCmd = new SqlCommand();
+            sqlCmd.Connection = sqlConnection;
+            sqlCmd.CommandText = @"INSERT INTO Pictures (IzdelieID, Picture) VALUES (@IzdelieID, @ImageData)";
+            sqlCmd.Parameters.Add("@ImageData", SqlDbType.Image, 1000000);
+            sqlCmd.Parameters["@ImageData"].Value = Picture;
+            sqlCmd.Parameters.AddWithValue("@IzdelieID", SqlDbType.Int).Value = IzdelieID;
+            sqlCmd.ExecuteNonQuery();
+        }
     }
 
-    public class ComboboxItem
+    /*public class ComboboxItem
     {
         public string Text { get; set; }
         public object Value { get; set; }
@@ -486,6 +532,6 @@ ORDER BY InProc";
         {
             return Value.ToString();
         }
-    }
+    } */
 
 }
