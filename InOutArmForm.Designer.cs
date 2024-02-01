@@ -498,6 +498,7 @@ namespace Teleatel_e
             this.pbOutPicture.Location = new System.Drawing.Point(571, 154);
             this.pbOutPicture.Name = "pbOutPicture";
             this.pbOutPicture.Size = new System.Drawing.Size(636, 373);
+            this.pbOutPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbOutPicture.TabIndex = 23;
             this.pbOutPicture.TabStop = false;
             // 

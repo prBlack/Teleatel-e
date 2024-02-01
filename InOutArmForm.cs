@@ -117,9 +117,13 @@ namespace Teleatel_e
         private void ReloadData()
         {
             String sqlStr = @"SELECT *, 'Выдать' AS [Action] FROM IncompleteOrdersView";
-            LoadToGrid(sqlStr, sqlConnection, gvIncompOrder);
             try
             {
+                LoadToGrid(sqlStr, sqlConnection, gvIncompOrder);
+                for (int i = 0; i< gvIncompOrder.Columns.Count - 2; i++)
+                {
+                    gvIncompOrder.Columns[i].ReadOnly = true;
+                }
                 for (int i = 0; i < gvIncompOrder.Rows.Count; i++)
                 {
                     DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
@@ -238,6 +242,24 @@ WHERE O.TypeID = {0}", takeoutOrderId);
                             tnOutCstmrFio.Text = ds.Tables[0].Rows[0].Field<String>("CustomerFio");
                             tbOutEqType.Text = ds.Tables[0].Rows[0].Field<String>("TypeName");
                             tbOutMasterFio.Text = ds.Tables[0].Rows[0].Field<String>("MasterFio");
+
+                            SqlCommand sqlCmd = new SqlCommand(@"
+                                SELECT P.Picture
+                                FROM Pictures AS P 
+                                WHERE P.IzdelieID = (
+                                    SELECT O.IzdelieID 
+                                    FROM Orders AS O 
+                                    WHERE O.TypeID = @OrderID
+                                )", sqlConnection);
+                            sqlCmd.Parameters.AddWithValue("@OrderID", SqlDbType.Int).Value = takeoutOrderId;
+                            SqlDataReader reader = sqlCmd.ExecuteReader();
+                            if (reader.Read())
+                            {
+                                Byte[] picBytes= new byte[0];
+                                picBytes = (Byte[])(reader.GetValue(0));
+                                MemoryStream strmMem = new MemoryStream(picBytes);
+                                pbOutPicture.Image = Image.FromStream(strmMem);
+                            }
 
 
 
